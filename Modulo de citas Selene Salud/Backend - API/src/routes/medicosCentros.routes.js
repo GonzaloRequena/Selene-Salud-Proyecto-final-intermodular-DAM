@@ -14,4 +14,6 @@ router.get("/medico/:id_medico", verificarToken, permitirRoles("ADMIN", "MEDICO"
 // 3. Desvincular médico de centro -> Solo los administradores
 router.delete("/medico/:id_medico/centro/:id_centro", verificarToken, permitirRoles("ADMIN"), medicosCentrosController.desvincularMedicoDeCentro);
 
+// 4. Ver médicos de un centro -> Permitido a ADMIN y PACIENTE para que elijan su facultativo
+router.get("/centro/:id_centro", verificarToken, permitirRoles("ADMIN", "PACIENTE"), medicosCentrosController.obtenerMedicosDeCentro);
 module.exports = router;

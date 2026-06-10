@@ -112,8 +112,36 @@ const desvincularMedicoDeCentro = async (req, res) => {
     }
 };
 
+/**
+ * 4. OBTENER LOS MÉDICOS QUE TRABAJAN EN UN CENTRO ESPECÍFICO
+ * GET /api/medicos-centros/centro/:id_centro
+ * Protegido: ADMIN y PACIENTE (necesario para el flujo de reserva de citas)
+ */
+const obtenerMedicosDeCentro = async (req, res) => {
+    const { id_centro } = req.params;
+
+    try {
+        const sql = `
+            SELECT u.id, u.dni_nie, u.nombre, u.apellidos, u.email, u.telefono 
+            FROM medicos_centros mc
+            JOIN usuarios u ON mc.id_medico = u.id
+            WHERE mc.id_centro = $1 AND u.rol = 'MEDICO'
+            ORDER BY u.apellidos ASC, u.nombre ASC;
+        `;
+        const resultado = await db.query(sql, [id_centro]);
+
+        // Devolvemos directamente el array de filas encontradas
+        res.json(resultado.rows);
+
+    } catch (error) {
+        console.error("Error al obtener médicos del centro:", error);
+        res.status(500).json({ error: "Error interno del servidor al consultar el cuadro médico" });
+    }
+};
+
 module.exports = {
     asignarMedicoACentro,
     obtenerCentrosDeMedico,
-    desvincularMedicoDeCentro
+    desvincularMedicoDeCentro,
+    obtenerMedicosDeCentro
 };
