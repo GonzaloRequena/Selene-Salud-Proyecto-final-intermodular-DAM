@@ -45,7 +45,7 @@ export class AdminService {
   // 5. Obtener todas las citas médicas (Ruta protegida)
   obtenerTodasCitas(): Observable<any> {
     // Atacamos al endpoint dinámico. El interceptor se encargará de mandar el token de ADMIN
-    return this.http.get<any>('http://localhost:3000/api/citas/mis-citas');
+    return this.http.get<any>(`${this.apiUrl}/citas/mis-citas`);
   }
 
   // 6. Obtener el historial clínico de un paciente por su ID (Ruta protegida)

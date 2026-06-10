@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'; // Importamos el entorno
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicoService {
-  // Ajusta esta URL si tu backend corre en otro puerto o en producción (Render)
-  private apiUrl = 'http://localhost:3000/api'; 
+  // RUTA LOCAL (Comentada para trabajar de forma local)
+  // private apiUrl = 'http://localhost:3000/api'; 
+
+  // RUTA DINÁMICA (Descomentada para producción / Netlify + Render)
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
