@@ -1,0 +1,50 @@
+@if (authService.usuarioLogueado()) {
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Selene Salud</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+
+        @if (authService.usuarioLogueado().rol === 'ADMIN') {
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" routerLink="/admin" routerLinkActive="active">Panel Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" routerLink="/admin" (click)="$event.preventDefault()">Historial
+            de Informes</a>
+        </li>
+        }
+
+        @if (authService.usuarioLogueado().rol === 'MEDICO') {
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" routerLink="/medico" routerLinkActive="active">Mi Agenda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" routerLink="/medico" (click)="$event.preventDefault()">Historial
+            de Informes</a>
+        </li>
+        }
+
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-white small">
+          Conectado: <strong>{{ authService.usuarioLogueado().nombre }}</strong>
+          <span class="badge bg-light text-primary ms-1">{{ authService.usuarioLogueado().rol }}</span>
+        </span>
+        <button class="btn btn-outline-light btn-sm rounded-2" (click)="ejecutarLogout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+}
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

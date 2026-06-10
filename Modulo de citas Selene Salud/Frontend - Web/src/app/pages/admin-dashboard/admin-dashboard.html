@@ -1,0 +1,370 @@
+<div class="row mb-3">
+  <div class="col">
+    <h2 class="fw-bold text-dark">Panel Global de Administración</h2>
+    <p class="text-muted mb-4">Gestión operativa interna de la red de salud Selene Salud.</p>
+  </div>
+</div>
+
+<ul class="nav nav-tabs mb-4 fw-semibold">
+  <li class="nav-item">
+    <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'personal'" (click)="pestanaActiva = 'personal'">
+      👨‍⚕️ Plantilla y Altas
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'centros'" (click)="pestanaActiva = 'centros'">
+      🏥 Centros de Salud ({{ listaCentros.length }})
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'citas'" (click)="pestanaActiva = 'citas'">
+      📅 Auditoría de Citas
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'informes'" (click)="pestanaActiva = 'informes'; volverAlBuscador()">
+      📂 Historial Clínico Global
+    </button>
+  </li>
+</ul>
+
+@if (pestanaActiva === 'personal') {
+  <div class="row g-4 animate__animated animate__fadeIn">
+    <div class="col-lg-5">
+      <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white fw-bold py-3">➕ Registrar Personal Sanitario</div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="ejecutarRegistro()">
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold text-muted">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.nombre" name="nombre" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold text-muted">Apellidos</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.apellidos" name="apellidos" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-muted">DNI / NIE</label>
+              <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.dni_nie" name="dni_nie" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-muted">Correo Electrónico</label>
+              <input type="email" class="form-control" [(ngModel)]="nuevoUsuario.email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-muted">Contraseña Inicial</label>
+              <input type="password" class="form-control" [(ngModel)]="nuevoUsuario.password" name="password" required>
+            </div>
+            <div class="row g-2 mb-4">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold text-muted">Teléfono</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.telefono" name="telefono">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold text-muted">Rol del Sistema</label>
+                <select class="form-select" [(ngModel)]="nuevoUsuario.rol" name="rol">
+                  <option value="MEDICO">Médico Clínico</option>
+                  <option value="ADMIN">Administrador</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 rounded-2">Guardar en Neon DB</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-7">
+      <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-light border-0 fw-bold py-3 d-flex justify-content-between align-items-center">
+          <span>Personal Médico en Activo</span>
+          <span class="badge bg-secondary text-white">{{ listaMedicos.length }} Médicos</span>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light text-muted small text-uppercase">
+                <tr>
+                  <th class="ps-4 py-3">Profesional</th>
+                  <th class="py-3">DNI/NIE</th>
+                  <th class="py-3">Contacto</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (medico of listaMedicos; track medico.id) {
+                  <tr>
+                    <td class="ps-4 py-3">
+                      <div class="fw-bold text-dark">{{ medico.apellidos }}, {{ medico.nombre }}</div>
+                      <div class="text-muted small">{{ medico.email }}</div>
+                    </td>
+                    <td class="py-3 font-monospace small text-secondary">{{ medico.dni_nie }}</td>
+                    <td class="py-3">
+                      <span class="badge bg-light text-dark border border-secondary-subtle">{{ medico.telefono || '---' }}</span>
+                    </td>
+                  </tr>
+                } @empty {
+                  <tr>
+                    <td colspan="3" class="text-center py-5 text-muted">
+                      <p class="mb-0 fw-semibold">No se detectan médicos cargados. Revisa la consola o crea uno nuevo arriba.</p>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (pestanaActiva === 'centros') {
+  <div class="row g-4 animate__animated animate__fadeIn">
+    
+    <div class="col-lg-7">
+      <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-light border-0 py-3">
+          <label class="form-label fw-bold text-secondary mb-2">Buscador de Hospitales de España</label>
+          <input type="text" class="form-control" placeholder="Escribe el nombre del centro o el municipio... (Ej: Virgen o Madrid)" [(ngModel)]="filtroCentro" name="filtroCentro">
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light text-muted small position-sticky top-0">
+                <tr>
+                  <th class="ps-3">ID</th>
+                  <th>Nombre del Centro Hospitalario</th>
+                  <th>Municipio</th>
+                  <th class="text-end pe-3">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (centro of obtenerCentrosFiltrados(); track centro.id) {
+                  <tr [class.table-primary]="centroSeleccionado?.id === centro.id">
+                    <td class="ps-3 text-muted small">#{{ centro.id }}</td>
+                    <td><strong class="text-dark">{{ centro.nombre }}</strong></td>
+                    <td><span class="badge bg-light text-secondary border">{{ centro.municipio || 'Desconocido' }}</span></td>
+                    <td class="text-end pe-3">
+                      <button class="btn btn-sm btn-outline-primary fw-semibold" (click)="seleccionarCentro(centro)">
+                        Seleccionar
+                      </button>
+                    </td>
+                  </tr>
+                } @empty {
+                  <tr>
+                    <td colspan="4" class="text-center py-4 text-muted">Ningún centro coincide con la búsqueda.</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      @if (centroSeleccionado) {
+        <div class="card shadow-sm border-0 border-start border-4 border-primary rounded-3">
+          <div class="card-header bg-primary text-white fw-bold py-3">
+            🔗 Vincular Personal Sanitario
+          </div>
+          <div class="card-body p-4">
+            <p class="small text-muted">Vas a asignar un profesional médico para pasar consulta operativa en el siguiente centro:</p>
+            <h5 class="fw-bold text-dark mb-1">{{ centroSeleccionado.nombre }}</h5>
+            <p class="text-secondary small mb-4">Municipio: {{ centroSeleccionado.municipio || 'Desconocido' }}</p>
+
+            <form (ngSubmit)="ejecutarVinculacion()">
+              <div class="mb-4">
+                <label class="form-label small fw-semibold text-muted">Elegir Médico Disponible</label>
+                <select class="form-select form-select-lg fs-6" [(ngModel)]="vinculacion.id_medico" name="id_medico" required>
+                  <option value="" disabled selected>-- Elige un médico de la lista --</option>
+                  @for (medico of listaMedicos; track medico.id) {
+                    <option [value]="medico.id">{{ medico.apellidos }}, {{ medico.nombre }} (DNI: {{ medico.dni_nie }})</option>
+                  }
+                </select>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success flex-grow-1 fw-bold py-2" [disabled]="!vinculacion.id_medico">
+                  Confirmar Asignación
+                </button>
+                <button type="button" class="btn btn-light border" (click)="centroSeleccionado = null">
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      } @else {
+        <div class="h-100 d-flex flex-column justify-content-center align-items-center text-center p-5 border rounded-3 bg-light border-dashed">
+          <div class="fs-1 text-muted mb-2">👈</div>
+          <h6 class="fw-bold text-secondary">Ningún centro seleccionado</h6>
+          <p class="small text-muted px-3">Haz clic en el botón "Seleccionar" de cualquier hospital de la tabla para gestionarlo o vincularle un médico.</p>
+        </div>
+      }
+    </div>
+
+  </div>
+}
+
+@if (pestanaActiva === 'citas') {
+  <div class="card shadow-sm border-0 rounded-3 animate__animated animate__fadeIn">
+    <div class="card-header bg-dark text-white fw-bold py-3 d-flex justify-content-between align-items-center">
+      <span>Supervisor de Citas Médicas Globales</span>
+      <span class="badge bg-primary text-white">{{ listaCitas.length }} Citas en Sistema</span>
+    </div>
+    
+    <div class="card-body p-0">
+      @if (listaCitas.length === 0) {
+        <div class="text-center py-5">
+          <p class="text-muted mb-0">No se registra ninguna cita médica en la base de datos de Neon actualmente.</p>
+        </div>
+      } @else {
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0 text-center">
+            <thead class="table-light text-secondary small text-uppercase">
+              <tr>
+                <th>Fecha y Hora</th>
+                <th>Paciente</th>
+                <th>Médico Asignado</th>
+                <th>Centro Sanitario</th>
+                <th>Estado de Cita</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (cita of listaCitas; track cita.cita_id) {
+                <tr>
+                  <td class="fw-bold text-dark">
+                    {{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }}
+                  </td>
+                  <td class="text-start ps-4">
+                    <div class="fw-semibold text-dark">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}</div>
+                  </td>
+                  <td>
+                    <span class="badge bg-info text-dark fw-medium px-2.5 py-1.5">
+                      Dr/a. {{ cita.medico_nombre }} {{ cita.medico_apellidos }}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="text-secondary small fw-semibold">
+                      {{ cita.centro_nombre }}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge px-3 py-2 rounded-pill fw-bold fs-7" [ngClass]="{
+                      'bg-success-subtle text-success border border-success': cita.estado === 'PROGRAMADA',
+                      'bg-danger-subtle text-danger border border-danger': cita.estado === 'ANULADA',
+                      'bg-warning-subtle text-warning border border-warning': cita.estado === 'COMPLETADA'
+                    }">
+                      {{ cita.estado }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+  </div>
+}
+
+@if (pestanaActiva === 'informes') {
+  <div class="animate__animated animate__fadeIn">
+    
+    @if (!pacienteSeleccionado) {
+      <div class="card shadow-sm border-0 rounded-3 p-4 bg-white mb-4">
+        <h5 class="fw-bold text-dark mb-2">Buscador e Inspector de Historiales Clínicos</h5>
+        <p class="text-muted small mb-3">Acceso de auditoría de administración para Selene Salud. Filtra y selecciona un paciente.</p>
+        
+        <div class="input-group mb-3 shadow-sm">
+          <span class="input-group-text bg-light border-end-0">👤</span>
+          <input type="text" class="form-control border-start-0 py-2" placeholder="Buscar paciente por nombre o apellidos..." [(ngModel)]="busquedaPaciente">
+        </div>
+
+        <div class="table-responsive rounded-3 border mt-3">
+          <table class="table table-hover align-middle mb-0 text-center">
+            <thead class="table-light text-secondary small text-uppercase">
+              <tr>
+                <th>ID Paciente</th>
+                <th>Nombre Completo</th>
+                <th>Teléfono</th>
+                <th>Auditoría</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (paciente of pacientesGlobales; track paciente.id) {
+                <tr>
+                  <td class="fw-bold text-secondary">#{{ paciente.id }}</td>
+                  <td class="text-start ps-4 fw-semibold text-dark">{{ paciente.nombre }} {{ paciente.apellidos }}</td>
+                  <td class="text-muted small">{{ paciente.telefono }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-secondary fw-bold px-3" (click)="seleccionarPaciente(paciente)">
+                      Inspeccionar Informes
+                    </button>
+                  </td>
+                </tr>
+              } @empty {
+                <tr>
+                  <td colspan="4" class="text-center py-4 text-muted small">No hay registros de pacientes concurrentes en el sistema.</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+
+    @if (pacienteSeleccionado) {
+      <div class="mb-3">
+        <button class="btn btn-sm btn-outline-secondary fw-bold shadow-sm" (click)="volverAlBuscador()">
+          ⬅️ Volver al Inspector Global
+        </button>
+      </div>
+
+      <div class="card shadow-sm border-0 rounded-3 bg-secondary text-white p-4 mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="fs-1"></div>
+          <div>
+            <h4 class="fw-bold mb-0">{{ pacienteSeleccionado.nombre }} {{ pacienteSeleccionado.apellidos }}</h4>
+            <p class="mb-0 small opacity-75">Modo Auditoría de Administración | ID: #{{ pacienteSeleccionado.id }}</p>
+          </div>
+        </div>
+      </div>
+
+      <h5 class="fw-bold text-dark mb-3">Informes Emitidos por el Personal Médico (Total: {{ historialClinico.length }})</h5>
+
+      @if (historialClinico.length === 0) {
+        <div class="card border-0 shadow-sm p-5 text-center rounded-3 bg-white">
+          <p class="text-muted fs-5 mb-0">Este paciente no registra informes clínicos grabados en el sistema.</p>
+        </div>
+      } @else {
+        <div class="row g-3">
+          @for (informe of historialClinico; track informe.informe_id) {
+            <div class="col-12">
+              <div class="card shadow-sm border-0 border-start border-4 border-secondary rounded-3 bg-white">
+                <div class="card-header bg-light border-0 py-2 d-flex justify-content-between align-items-center">
+                  <span class="text-dark fw-bold small">Fecha de Atención: {{ informe.fecha_cita | date:'dd/MM/yyyy HH:mm' }} Hs</span>
+                  <span class="badge bg-dark rounded-pill">Informe #{{ informe.informe_id }}</span>
+                </div>
+                <div class="card-body">
+                  <p class="mb-2"><strong>Diagnóstico:</strong> <span class="text-dark">{{ informe.diagnostico }}</span></p>
+                  <p class="mb-2"><strong>Tratamiento:</strong> <span class="text-success fw-medium">{{ informe.tratamiento }}</span></p>
+                  @if (informe.observaciones) {
+                    <p class="mb-2 small text-secondary"><strong>Observaciones:</strong> <em>{{ informe.observaciones }}</em></p>
+                  }
+                  <hr class="my-2 opacity-50">
+                  <div class="text-end text-muted small">
+                    Facultativo Firmante: <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>
+}

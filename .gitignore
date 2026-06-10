@@ -1,0 +1,35 @@
+# #######################################################
+# SELENE SALUD - GLOBAL GITIGNORE
+# #######################################################
+
+# Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
+*.log
+
+# #```
+# 1. BACKEND - CONFIGURACIÓN
+# #```
+node_modules/
+.env
+package-lock.json
+
+# #```
+# 2. FRONTEND (ANGULAR) - CONFIGURACIÓN
+# #```
+node_modules/
+.angular/
+dist/
+package-lock.json
+.env
+
+# #```
+# 3. MOBILE (FUTURA APP) - CONFIGURACIÓN
+# #```
+node_modules/
+.angular/
+dist/
+www/
+platforms/
+plugins/
+.sourcemaps/

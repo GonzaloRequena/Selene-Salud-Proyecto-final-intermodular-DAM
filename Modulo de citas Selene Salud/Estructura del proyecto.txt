@@ -1,0 +1,39 @@
+selene-salud-tfg/               <-- Tu carpeta contenedor para Git
+│
+├── .gitignore                  <-- Para evitar subir carpetas pesadas (como node_modules)
+├── README.md                   <-- Documentación principal de tu TFG
+│
+├── backend-api/                <-- Aquí dentro irá Node.js + Express (Fase 2)
+│   ├── .env
+│   ├── node_modules/
+│   ├── public/img
+│   ├── package.json
+│   └── src/
+│       ├── app.js          
+│       ├── server.js       
+│       └── config/
+│           └── db.js
+│
+├── frontend-web/               <-- Aquí dentro irá tu proyecto de Angular (Fase 3)
+│   ├── src/
+│   ├── angular.json
+│   └── package.json
+│
+└── frontend-mobile/            <-- Aquí dentro irá tu proyecto de Android Studio (Fase 4)
+    ├── app/
+    └── build.gradle
+
+
+
+
+postgresql://neondb_owner:npg_Nct4IrHBK2RC@ep-divine-field-aqg8z807-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+DATABASE_URL='postgresql://neondb_owner:npg_Nct4IrHBK2RC@ep-divine-field-aqg8z807-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+
+
+
+Cosas a añadir:
+- etiquetas meta en app.html para cambiar icono
+
+Funcionalidades:
+- Crear pacientes
