@@ -88,7 +88,33 @@ const obtenerDisponibilidadPorCentro = async (req, res) => {
     }
 };
 
+/**
+ * 3. CONSULTAR DISPONIBILIDAD DE UN MÉDICO ESPECÍFICO EN UN CENTRO
+ * GET /api/disponibilidad/centro/:id_centro/medico/:id_medico
+ * Protegido: Accesible por cualquier usuario logueado (PACIENTES)
+ */
+const obtenerDisponibilidadMedicoEnCentro = async (req, res) => {
+    const { id_centro, id_medico } = req.params;
+
+    try {
+        const sql = `
+            SELECT id, id_medico, id_centro, to_char(fecha, 'YYYY-MM-DD') as fecha, hora_inicio, hora_fin, duracion_minutos
+            FROM disponibilidad_medica
+            WHERE id_centro = $1 AND id_medico = $2 AND fecha >= CURRENT_DATE
+            ORDER BY fecha ASC, hora_inicio ASC;
+        `;
+        const resultado = await db.query(sql, [id_centro, id_medico]);
+
+        res.json(resultado.rows);
+
+    } catch (error) {
+        console.error("Error al obtener disponibilidad del médico:", error);
+        res.status(500).json({ error: "Error interno del servidor al consultar la agenda del médico" });
+    }
+};
+
 module.exports = {
     crearDisponibilidad,
-    obtenerDisponibilidadPorCentro
+    obtenerDisponibilidadPorCentro,
+    obtenerDisponibilidadMedicoEnCentro
 };

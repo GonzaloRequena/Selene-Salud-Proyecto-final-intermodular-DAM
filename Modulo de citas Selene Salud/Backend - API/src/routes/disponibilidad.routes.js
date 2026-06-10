@@ -10,4 +10,7 @@ router.post("/", verificarToken, permitirRoles("MEDICO", "ADMIN"), disponibilida
 // 2. Ver turnos por centro -> Cualquier usuario registrado (incluidos PACIENTES) puede consultarlos para pedir cita
 router.get("/centro/:id_centro", verificarToken, disponibilidadController.obtenerDisponibilidadPorCentro);
 
+// 3. Ver turnos de un médico específico en un centro determinado
+router.get("/centro/:id_centro/medico/:id_medico", verificarToken, disponibilidadController.obtenerDisponibilidadMedicoEnCentro);
+
 module.exports = router;
