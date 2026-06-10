@@ -22,7 +22,7 @@ class HistorialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         binding = ActivityHistorialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

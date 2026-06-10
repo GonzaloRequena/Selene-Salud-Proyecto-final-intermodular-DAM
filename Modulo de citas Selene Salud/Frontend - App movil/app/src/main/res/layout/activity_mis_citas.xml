@@ -5,25 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FDFBFF">
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo3"
+        android:scaleType="fitCenter"
+        android:contentDescription="Logo Selene Salud"
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/tvTituloMisCitas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis Citas Médicas"
-        android:textColor="#0061A4"
-        android:textSize="24sp"
+        android:text="Mis citas médicas"
+        android:gravity="center"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="4dp"/>
+        android:textColor="@color/brand_primary"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Consulta tus citas programadas o cancela si lo necesitas."
-        android:textColor="#41474D"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
         android:layout_marginBottom="16dp"/>
 

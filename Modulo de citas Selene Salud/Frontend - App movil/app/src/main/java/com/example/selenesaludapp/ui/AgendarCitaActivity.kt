@@ -34,7 +34,7 @@ class AgendarCitaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         binding = ActivityAgendarCitaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

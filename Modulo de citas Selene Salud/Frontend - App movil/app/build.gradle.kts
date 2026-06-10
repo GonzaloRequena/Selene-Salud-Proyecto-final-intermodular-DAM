@@ -47,6 +47,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    implementation("androidx.core:core-splashscreen:1.0.0") // dependencia para poder usar Splash Screen
+
+
     // Retrofit y convertidor de JSON (GSON)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")

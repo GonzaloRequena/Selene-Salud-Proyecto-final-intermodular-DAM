@@ -20,8 +20,8 @@
             android:id="@+id/tvAvatar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="#E3F2FD"
-            android:textColor="#1976D2"
+            android:background="@color/brand_primary_light"
+            android:textColor="@color/brand_primary"
             android:text="🩺"
             android:textSize="20sp"
             android:gravity="center"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Especialidad médica"
                 android:textSize="14sp"
-                android:textColor="#1976D2"
+                android:textColor="@color/brand_primary"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
     </LinearLayout>

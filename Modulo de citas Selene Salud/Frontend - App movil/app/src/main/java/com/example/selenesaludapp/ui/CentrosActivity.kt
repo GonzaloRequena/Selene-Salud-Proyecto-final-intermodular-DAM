@@ -27,7 +27,7 @@ class CentrosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         binding = ActivityCentrosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

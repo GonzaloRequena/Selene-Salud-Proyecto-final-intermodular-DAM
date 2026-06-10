@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Consulta: 10/06/2026"
-            android:textColor="#0061A4"
+            android:textColor="@color/brand_primary"
             android:textSize="13sp"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DIAGNÓSTICO"
-            android:textColor="#536573"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
 
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TRATAMIENTO PRESCRITO"
-            android:textColor="#536573"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
 
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="OBSERVACIONES"
-            android:textColor="#536573"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
 

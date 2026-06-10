@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="brand_primary">#7BB687</color>
+    <color name="brand_primary_dark">#3B704C</color>
+    <color name="brand_primary_light">#E0F7E6</color>
+    <color name="bg_app">#D8D8D9</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_main">#212529</color>
+    <color name="text_secondary">#5D656B</color>
+    <color name="text_muted">#ADB5BD</color>
+    <color name="error_soft">#DC3545</color>
 </resources>

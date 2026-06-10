@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Médico: Dr. Manuel García"
-            android:textColor="#41474D"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -74,6 +74,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"
+            app:cornerRadius="12dp"
             android:visibility="visible"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

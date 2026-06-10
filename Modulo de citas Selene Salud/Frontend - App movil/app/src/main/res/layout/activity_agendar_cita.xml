@@ -5,27 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FDFBFF">
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo3"
+        android:scaleType="fitCenter"
+        android:contentDescription="Logo Selene Salud"
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/tvTituloPaso3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Paso 3: Selecciona Fecha y Hora"
-        android:textColor="#0061A4"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/brand_primary"
+        android:layout_margin="16dp"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/tvMedicoSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cita con: Dr. Nombre Apellido"
-        android:textColor="#41474D"
+        android:textColor="@color/text_secondary"
         android:textSize="16sp"
+        android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
     <CalendarView
@@ -57,9 +66,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Confirmar y Agendar Cita"
-        android:backgroundTint="#0061A4"
+        android:backgroundTint="@color/brand_primary"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        app:cornerRadius="12dp"/>
 </LinearLayout>

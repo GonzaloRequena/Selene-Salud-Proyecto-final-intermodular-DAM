@@ -5,24 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FDFBFF">
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo3"
+        android:scaleType="fitCenter"
+        android:contentDescription="Logo Selene Salud"
+        android:layout_gravity="center" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mi Historial Clínico"
-        android:textColor="#0061A4"
-        android:textSize="24sp"
+        android:gravity="center"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="4dp"/>
+        android:textColor="@color/brand_primary"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Histórico oficial de diagnósticos, tratamientos e informes."
-        android:textColor="#41474D"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
         android:layout_marginBottom="12dp"/>
 
@@ -30,7 +38,7 @@
         android:id="@+id/etBuscadorHistorial"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@android:color/white"
+        android:background="@color/brand_primary_light"
         android:elevation="2dp"
         android:hint="Buscar por diagnóstico o medicamento..."
         android:paddingHorizontal="16dp"

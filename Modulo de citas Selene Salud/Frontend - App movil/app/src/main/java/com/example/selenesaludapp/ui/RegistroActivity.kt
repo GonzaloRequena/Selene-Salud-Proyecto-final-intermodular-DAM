@@ -17,7 +17,7 @@ class RegistroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

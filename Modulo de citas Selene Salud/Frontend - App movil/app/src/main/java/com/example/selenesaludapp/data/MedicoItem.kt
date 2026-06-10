@@ -13,9 +13,9 @@ data class MedicoItem(
     // No viene en el JSON de Neon, pero cualquier parte de tu App que llame a
     // 'medico.especialidad' seguirá funcionando y mostrará este texto por defecto.
     val Blackespecialidad: String
-        get() = "Medicina General y Familiar"
+        get() = "Medicina general y familiar"
 
     // Si tu adaptador viejo usaba exactamente "medico.especialidad", deja este nombre:
     val especialidad: String
-        get() = "Medicina General y Familiar"
+        get() = "Medicina general y familiar"
 }

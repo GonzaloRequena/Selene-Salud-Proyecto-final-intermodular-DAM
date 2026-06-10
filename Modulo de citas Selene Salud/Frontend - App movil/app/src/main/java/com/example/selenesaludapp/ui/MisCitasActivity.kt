@@ -22,7 +22,7 @@ class MisCitasActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         binding = ActivityMisCitasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
