@@ -10,7 +10,7 @@ El proyecto está estructurado bajo una arquitectura modular desacoplada y divid
 
 Para facilitar la evaluación y auditoría del sistema, los componentes web y de servidor se encuentran desplegados en entornos de producción de acceso público:
 
-* **API Backend (Servidor):** [Desplegado en Render](https://tu-url-de-render.onrender.com/api)
+* **API Backend (Servidor):** [Desplegado en Render](https://api-selene-salud.onrender.com/api)
 * **Panel administrativo y médico (Frontend Web):** [Acceder a la Web en Netlify](https://scintillating-sunburst-f4de07.netlify.app/)
 * **Persistencia de datos (Base de datos):** PostgreSQL en entorno Serverless de [Neon.tech](https://neon.tech).
 
