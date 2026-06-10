@@ -11,6 +11,6 @@ router.post("/login", usuariosController.login);
 const { verificarToken, permitirRoles } = require("../middlewares/auth.middleware");
 
 // Ruta para que el Admin obtenga los médicos para sus formularios
-router.get("/medicos", verificarToken, permitirRoles("ADMIN"), usuariosController.obtenerMedicos);
+router.get("/medicos", verificarToken, permitirRoles("ADMIN", "PACIENTE"), usuariosController.obtenerMedicos);
 
 module.exports = router;
