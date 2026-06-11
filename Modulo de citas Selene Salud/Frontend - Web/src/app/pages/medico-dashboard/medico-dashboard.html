@@ -1,6 +1,6 @@
 <div class="row mb-3">
     <div class="col-md-8">
-        <h2 class="fw-bold text-dark">Panel del Profesional Sanitario</h2>
+        <h2 class="fw-bold text-dark">Panel del profesional sanitario</h2>
         <p class="text-muted mb-4">Bienvenido/a, Dr/a. <span class="text-primary fw-semibold">{{ medicoNombre }}</span>.
             Gestión de consultas en tiempo real.</p>
     </div>
@@ -11,19 +11,19 @@
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'citas'"
             (click)="pestanaActiva = 'citas'">
-            Consultas del Día (En espera: {{ citasPendientes.length }})
+            Consultas del día (En espera: {{ citasPendientes.length }})
         </button>
     </li>
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'agenda'"
             (click)="pestanaActiva = 'agenda'">
-            Apertura de Agenda y Turnos
+            Apertura de agenda y turnos
         </button>
     </li>
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'informes'"
             (click)="pestanaActiva = 'informes'; volverAlBuscador()">
-            Historial de Informes
+            Historial de informes
         </button>
     </li>
 </ul>
@@ -33,7 +33,7 @@
 
 <div class="card shadow-sm border-0 rounded-3 mb-4 animate__animated animate__fadeIn">
     <div class="card-header bg-primary text-white fw-bold py-3 d-flex justify-content-between align-items-center">
-        <span>Cola de Pacientes en Espera (Pendientes)</span>
+        <span>Cola de pacientes en espera / Pendientes</span>
         <span class="badge bg-white text-primary rounded-pill fw-bold">{{ citasPendientes.length }}</span>
     </div>
     <div class="card-body p-0">
@@ -49,7 +49,7 @@
                     <tr>
                         <th>Horario</th>
                         <th>Paciente</th>
-                        <th>Centro Sanitario</th>
+                        <th>Centro sanitario</th>
                         <th>Estado</th>
                         <th>Acción Clínica</th>
                     </tr>
@@ -58,10 +58,10 @@
                     @for (cita of citasPendientes; track cita.cita_id || cita.id) {
                     <tr>
                         <td class="fw-bold text-dark">{{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }} Hs</td>
-                        <td class="text-start ps-4">
+                        <td class="ps-4">
                             <div class="fw-semibold">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}</div>
                         </td>
-                        <td><span class="text-muted small fw-semibold">🏥 {{ cita.centro_nombre }}</span></td>
+                        <td><span class="text-muted small fw-semibold">{{ cita.centro_nombre }}</span></td>
                         <td>
                             <span
                                 class="badge bg-success-subtle text-success border border-success px-2.5 py-1.5 rounded-pill fw-bold">
@@ -71,7 +71,7 @@
                         <td>
                             <button class="btn btn-sm btn-success fw-bold px-3 py-1.5 shadow-sm"
                                 (click)="abrirModoConsulta(cita)">
-                                Atender Paciente
+                                Atender paciente
                             </button>
                         </td>
                     </tr>
@@ -87,7 +87,7 @@
 <div class="card shadow-sm border-0 rounded-3 bg-light animate__animated animate__fadeIn">
     <div class="card-header bg-secondary text-white fw-bold py-2.5 d-flex justify-content-between align-items-center"
         (click)="historialColapsado = !historialColapsado" style="cursor: pointer; user-select: none;">
-        <span class="small">{{ historialColapsado ? '➕ Mostrar' : '➖ Ocultar' }} Historial de Consultas Procesadas /
+        <span class="small">{{ historialColapsado ? '➕ Mostrar' : '➖ Ocultar' }} Historial de consultas procesadas /
             Cerradas</span>
         <span class="badge bg-dark rounded-pill small">{{ citasFinalizadas.length }}</span>
     </div>
@@ -100,7 +100,7 @@
                     <tr>
                         <th>Horario</th>
                         <th>Paciente</th>
-                        <th>Centro Sanitario</th>
+                        <th>Centro sanitario</th>
                         <th>Estado Final</th>
                         <th>Acción</th>
                     </tr>
@@ -110,7 +110,7 @@
                     <tr class="table-light">
                         <td class="text-muted text-decoration-line-through">{{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm'
                             }}</td>
-                        <td class="text-start ps-4 text-muted">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}
+                        <td class="ps-4 text-muted">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}
                         </td>
                         <td class="text-muted small">{{ cita.centro_nombre }}</td>
                         <td>
@@ -123,7 +123,7 @@
                         </td>
                         <td>
                             <button class="btn btn-xs btn-outline-secondary disabled px-2 py-0.5"
-                                style="font-size: 0.75rem;">Registro Cerrado</button>
+                                style="font-size: 0.75rem;">Registro cerrado</button>
                         </td>
                     </tr>
                     }
@@ -141,7 +141,7 @@
 
     @if (!pacienteSeleccionado) {
     <div class="card shadow-sm border-0 rounded-3 p-4 bg-white mb-4">
-        <h5 class="fw-bold text-dark mb-3">Buscador Global de Pacientes Asignados</h5>
+        <h5 class="fw-bold text-dark mb-3">Buscador global de pacientes asignados</h5>
         <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-light text-secondary border-end-0">👤</span>
             <input type="text" class="form-control border-start-0 py-2"
@@ -153,22 +153,22 @@
                 <thead class="table-light text-secondary small text-uppercase">
                     <tr>
                         <th>Código ID</th>
-                        <th>Nombre Completo</th>
-                        <th>Teléfono de Contacto</th>
-                        <th>Acceso Técnico</th>
+                        <th>Nombre completo</th>
+                        <th>Teléfono de contacto</th>
+                        <th>Acceso técnico</th>
                     </tr>
                 </thead>
                 <tbody>
                     @for (paciente of pacientesDisponibles; track paciente.id) {
                     <tr>
                         <td class="fw-bold text-primary">#{{ paciente.id }}</td>
-                        <td class="text-start ps-4 fw-semibold text-dark">{{ paciente.nombre }} {{ paciente.apellidos }}
+                        <td class="ps-4 fw-semibold text-dark">{{ paciente.nombre }} {{ paciente.apellidos }}
                         </td>
                         <td class="text-muted small">{{ paciente.telefono }}</td>
                         <td>
                             <button class="btn btn-sm btn-outline-primary fw-bold px-3"
                                 (click)="seleccionarPaciente(paciente)">
-                                Ver Historial Clínico
+                                Ver historial clínico
                             </button>
                         </td>
                     </tr>
@@ -187,9 +187,9 @@
     @if (pacienteSeleccionado) {
     <div class="mb-3 d-flex justify-content-between align-items-center">
         <button class="btn btn-sm btn-outline-secondary fw-bold shadow-sm" (click)="volverAlBuscador()">
-            ⬅️ Volver al Buscador de Expedientes
+            ⬅️ Volver al buscador de expedientes
         </button>
-        <span class="text-muted small">Expediente Clínico de Neon Encriptado 🔒</span>
+        <span class="text-muted small">Expediente clínico encriptado</span>
     </div>
 
     <div class="card shadow-sm border-0 rounded-3 bg-primary text-white p-4 mb-4">
@@ -197,13 +197,13 @@
             <div class="fs-1">👤</div>
             <div>
                 <h4 class="fw-bold mb-0">{{ pacienteSeleccionado.nombre }} {{ pacienteSeleccionado.apellidos }}</h4>
-                <p class="mb-0 small opacity-75">ID de Paciente: #{{ pacienteSeleccionado.id }} | Teléfono: {{
+                <p class="mb-0 small opacity-75">ID de paciente: #{{ pacienteSeleccionado.id }} | Teléfono: {{
                     pacienteSeleccionado.telefono }}</p>
             </div>
         </div>
     </div>
 
-    <h5 class="fw-bold text-secondary mb-3">Línea de Tiempo de Evolución Clínica (Total: {{ historialClinico.length
+    <h5 class="fw-bold text-secondary mb-3">Línea de tiempo de evolución clínica (Total: {{ historialClinico.length
         }})</h5>
 
     @if (historialClinico.length === 0) {
@@ -248,10 +248,10 @@
     <div class="col-lg-4">
         <div class="card shadow-sm border-0 border-start border-4 border-success rounded-3 bg-light">
             <div class="card-body">
-                <h5 class="fw-bold text-success mb-3">👤 Paciente en Consulta</h5>
+                <h5 class="fw-bold text-success mb-3">👤 Paciente en consulta</h5>
                 <h4 class="fw-bold text-dark mb-1">{{ citaSeleccionada.paciente_nombre }} {{
                     citaSeleccionada.paciente_apellidos }}</h4>
-                <p class="text-muted small mb-3">Historial Clínico Digital Activo</p>
+                <p class="text-muted small mb-3">Historial clínico digital activo</p>
                 <hr>
                 <p class="mb-1 small text-secondary"><strong>Cita ID:</strong> #{{ citaSeleccionada.cita_id ||
                     citaSeleccionada.id }}</p>
@@ -260,38 +260,38 @@
                     date:'dd/MM/yyyy - HH:mm' }} Hs</p>
             </div>
         </div>
-        <button class="btn btn-outline-secondary w-100 mt-3 fw-bold py-2" (click)="citaSeleccionada = null">Suspender
-            Consulta / Volver</button>
+        <button class="btn btn-outline-danger w-100 mt-3 fw-bold py-2" (click)="citaSeleccionada = null">Suspender
+            consulta / Volver</button>
     </div>
 
     <div class="col-lg-8">
         <div class="card shadow-sm border-0 rounded-3">
-            <div class="card-header bg-dark text-white fw-bold py-3">Entrada de Datos Clínicos e Informe de Alta
+            <div class="card-header bg-dark text-white fw-bold py-3">Entrada de datos clínicos e informe de alta
             </div>
             <div class="card-body p-4">
                 <form (ngSubmit)="ejecutarGuardarInforme()">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">1. Diagnóstico Clínico Principal *</label>
+                        <label class="form-label fw-semibold text-secondary">1. Diagnóstico clínico principal *</label>
                         <textarea class="form-control border-secondary-subtle" name="diagnostico" rows="3"
                             placeholder="Ej: Faringoamigdalitis aguda bacteriana..."
                             [(ngModel)]="nuevoInforme.diagnostico" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">2. Tratamiento y Receta Electrónica
+                        <label class="form-label fw-semibold text-secondary">2. Tratamiento y receta electrónica
                             *</label>
                         <textarea class="form-control border-secondary-subtle" name="tratamiento" rows="3"
                             placeholder="Ej: Amoxicilina 850mg cada 8 horas..." [(ngModel)]="nuevoInforme.tratamiento"
                             required></textarea>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label fw-semibold text-secondary">3. Recomendaciones y Observaciones
-                            Generales</label>
+                        <label class="form-label fw-semibold text-secondary">3. Recomendaciones y observaciones
+                            generales</label>
                         <textarea class="form-control border-secondary-subtle" name="observaciones" rows="2"
                             placeholder="Ej: Reposo relativo durante 48 horas..."
                             [(ngModel)]="nuevoInforme.observaciones"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm py-2.5">Registrar
-                        Informe y Cerrar Ficha Clínica</button>
+                        informe y cerrar ficha clínica</button>
                 </form>
             </div>
         </div>
@@ -303,11 +303,11 @@
 <div class="row g-4 animate__animated animate__fadeIn">
     <div class="col-lg-5">
         <div class="card shadow-sm border-0 rounded-3">
-            <div class="card-header bg-dark text-white fw-bold py-3">Publicar Franja de Consulta</div>
+            <div class="card-header bg-dark text-white fw-bold py-3">Publicar franja de consulta</div>
             <div class="card-body p-4">
                 <form (ngSubmit)="ejecutarCrearAgenda()">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">Selecciona el Centro Médico</label>
+                        <label class="form-label fw-semibold text-secondary">Selecciona el centro médico</label>
                         <select class="form-select" name="id_centro" [(ngModel)]="nuevaDisponibilidad.id_centro"
                             required>
                             <option value="" disabled selected>-- Elige uno de tus centros asignados --</option>
@@ -317,24 +317,24 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">Fecha de Consulta</label>
+                        <label class="form-label fw-semibold text-secondary">Fecha de consulta</label>
                         <input type="date" class="form-control" name="fecha" [(ngModel)]="nuevaDisponibilidad.fecha"
                             required>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="form-label fw-semibold text-secondary">Hora de Inicio</label>
+                            <label class="form-label fw-semibold text-secondary">Hora de inicio</label>
                             <input type="time" class="form-control" name="hora_inicio"
                                 [(ngModel)]="nuevaDisponibilidad.hora_inicio" required>
                         </div>
                         <div class="col">
-                            <label class="form-label fw-semibold text-secondary">Hora de Fin</label>
+                            <label class="form-label fw-semibold text-secondary">Hora de fin</label>
                             <input type="time" class="form-control" name="hora_fin"
                                 [(ngModel)]="nuevaDisponibilidad.hora_fin" required>
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label fw-semibold text-secondary">Duración Estimada por Paciente</label>
+                        <label class="form-label fw-semibold text-secondary">Duración estimada por paciente</label>
                         <select class="form-select" name="duracion_minutos"
                             [(ngModel)]="nuevaDisponibilidad.duracion_minutos">
                             <option [value]="10">10 Minutos</option>
@@ -343,8 +343,8 @@
                             <option [value]="30">30 Minutos</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2.5 shadow-sm">Generar Bloques de
-                        Disponibilidad</button>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2.5 shadow-sm">Generar bloques de
+                        disponibilidad</button>
                 </form>
             </div>
         </div>
@@ -355,12 +355,12 @@
             <p class="text-muted small">Cuando pulsas el botón, el backend toma tu rango horario completo y realiza una
                 segmentación matemática automática en la base de datos de Neon.</p>
             <ul class="text-muted small ps-3">
-                <li class="mb-2"><strong>Protección de Identidad:</strong> La API inyecta tu ID de usuario de forma
+                <li class="mb-2"><strong>Protección de identidad:</strong> La API inyecta tu ID de usuario de forma
                     segura mediante el token. No puedes suplantar el horario de otro médico.</li>
-                <li class="mb-2"><strong>Mapeo de Intervalos:</strong> Si abres de 09:00 a 10:00 con intervalos de 15
+                <li class="mb-2"><strong>Mapeo de intervalos:</strong> Si abres de 09:00 a 10:00 con intervalos de 15
                     minutos, el sistema generará automáticamente 4 huecos independientes listos para que los pacientes
                     los reserven desde la aplicación móvil.</li>
-                <li class="mb-0"><strong>Centros Asignados:</strong> Solo aparecen en tu lista los centros médicos con
+                <li class="mb-0"><strong>Centros asignados:</strong> Solo aparecen en tu lista los centros médicos con
                     los que el Administrador te ha vinculado formalmente desde el panel global.</li>
             </ul>
         </div>

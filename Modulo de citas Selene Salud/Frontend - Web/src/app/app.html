@@ -1,50 +1,77 @@
 @if (authService.usuarioLogueado()) {
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+<nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm mb-4 py-3">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Selene Salud</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="#">
+      <img src="logo2.png" alt="Logo Selene Salud" height="35" class="d-inline-block transition-all">
+      <span class="fs-4 tracking-tight">Selene<span class="fw-light text-secondary">Salud</span></span>
+    </a>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3 gap-1">
 
         @if (authService.usuarioLogueado().rol === 'ADMIN') {
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/admin" routerLinkActive="active">Panel Admin</a>
+          <a class="nav-link px-3 rounded-2 fw-medium text-secondary" routerLink="/admin"
+            routerLinkActive="text-primary fw-bold bg-light active">
+            Panel Admin
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" routerLink="/admin" (click)="$event.preventDefault()">Historial
-            de Informes</a>
+          <a class="nav-link px-3 rounded-2 fw-medium text-secondary" style="cursor: pointer;" routerLink="/admin"
+            (click)="$event.preventDefault()">
+            Historial de informes
+          </a>
         </li>
         }
 
         @if (authService.usuarioLogueado().rol === 'MEDICO') {
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/medico" routerLinkActive="active">Mi Agenda</a>
+          <a class="nav-link px-3 rounded-2 fw-medium text-secondary" routerLink="/medico"
+            routerLinkActive="text-primary fw-bold bg-light active">
+            Mi agenda
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" routerLink="/medico" (click)="$event.preventDefault()">Historial
-            de Informes</a>
+          <a class="nav-link px-3 rounded-2 fw-medium text-secondary" style="cursor: pointer;" routerLink="/medico"
+            (click)="$event.preventDefault()">
+            Historial de informes
+          </a>
         </li>
         }
 
       </ul>
 
-      <div class="d-flex align-items-center gap-3">
-        <span class="text-white small">
-          Conectado: <strong>{{ authService.usuarioLogueado().nombre }}</strong>
-          <span class="badge bg-light text-primary ms-1">{{ authService.usuarioLogueado().rol }}</span>
-        </span>
-        <button class="btn btn-outline-light btn-sm rounded-2" (click)="ejecutarLogout()">
-          Cerrar Sesión
+      <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-light">
+
+        <div class="text-lg-end lh-sm">
+          <span class="text-muted small px-1" style="font-size: 0.75rem;">CONECTADO</span>
+          <span class="text-dark fw-semibold small gap-2 mx-2"><strong>{{ authService.usuarioLogueado().nombre
+              }}</strong></span>
+          <span
+            class="badge bg-light text-primary border border-primary border-opacity-10 mx-2 px-2 py-1.5 rounded-pill font-monospace fw-bold">
+            {{ authService.usuarioLogueado().rol }}
+          </span>
+        </div>
+
+        <div class="d-none d-lg-block border-start border-light h-100 py-3 mx-1"></div>
+
+        <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-medium transition-all"
+          style="font-size: 0.85rem;" (click)=ejecutarLogout()>
+          <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
         </button>
+
       </div>
     </div>
   </div>
 </nav>
 }
 
-<main class="container">
+<div class="container my-4">
   <router-outlet></router-outlet>
-</main>
+</div>

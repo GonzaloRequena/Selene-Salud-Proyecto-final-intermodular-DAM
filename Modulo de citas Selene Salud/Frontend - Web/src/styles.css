@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Tu paleta premium de Selene Salud aplicada a Bootstrap */
+  --bs-primary: #3B704C;        /* Verde oscuro principal (brand_primary_dark) */
+  --bs-primary-rgb: 59, 112, 76;
+  
+  --bs-secondary: #7BB687;      /* Verde intermedio */
+  --bs-secondary-rgb: 123, 182, 135;
+  
+  --bs-light: #E0F7E6;          /* Verde pastel sutil para fondos de tarjetas/badges */
+  --bs-light-rgb: 224, 247, 230;
+  
+  --bs-body-bg: #F8F9FA;         /* Fondo grisáceo limpio para toda la web */
+}
+
+/* Ajuste opcional para que los botones primary tengan texto blanco y buen contraste */
+.btn-primary {
+  color: #ffffff !important;
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-primary) !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--bs-secondary) !important;
+  color: var(--bs-secondary) !important;
+}
+
+.bg-info {
+  background-color: var(--bs-light) !important;
+}

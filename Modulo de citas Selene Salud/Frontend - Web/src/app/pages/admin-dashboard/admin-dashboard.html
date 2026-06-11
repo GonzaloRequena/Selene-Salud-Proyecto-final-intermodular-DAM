@@ -1,6 +1,6 @@
 <div class="row mb-3">
   <div class="col">
-    <h2 class="fw-bold text-dark">Panel Global de Administración</h2>
+    <h2 class="fw-bold text-dark">Panel global de administración</h2>
     <p class="text-muted mb-4">Gestión operativa interna de la red de salud Selene Salud.</p>
   </div>
 </div>
@@ -8,22 +8,22 @@
 <ul class="nav nav-tabs mb-4 fw-semibold">
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'personal'" (click)="pestanaActiva = 'personal'">
-      👨‍⚕️ Plantilla y Altas
+      Plantilla y altas
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'centros'" (click)="pestanaActiva = 'centros'">
-      🏥 Centros de Salud ({{ listaCentros.length }})
+      Centros de salud ({{ listaCentros.length }})
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'citas'" (click)="pestanaActiva = 'citas'">
-      📅 Auditoría de Citas
+      Auditoría de citas
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'informes'" (click)="pestanaActiva = 'informes'; volverAlBuscador()">
-      📂 Historial Clínico Global
+      Historial clínico global
     </button>
   </li>
 </ul>
@@ -32,7 +32,7 @@
   <div class="row g-4 animate__animated animate__fadeIn">
     <div class="col-lg-5">
       <div class="card shadow-sm border-0 rounded-3">
-        <div class="card-header bg-dark text-white fw-bold py-3">➕ Registrar Personal Sanitario</div>
+        <div class="card-header bg-dark text-white fw-bold py-3">➕ Registrar personal sanitario</div>
         <div class="card-body p-4">
           <form (ngSubmit)="ejecutarRegistro()">
             <div class="row g-2 mb-3">
@@ -50,11 +50,11 @@
               <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.dni_nie" name="dni_nie" required>
             </div>
             <div class="mb-3">
-              <label class="form-label small fw-semibold text-muted">Correo Electrónico</label>
+              <label class="form-label small fw-semibold text-muted">Correo electrónico</label>
               <input type="email" class="form-control" [(ngModel)]="nuevoUsuario.email" name="email" required>
             </div>
             <div class="mb-3">
-              <label class="form-label small fw-semibold text-muted">Contraseña Inicial</label>
+              <label class="form-label small fw-semibold text-muted">Contraseña inicial</label>
               <input type="password" class="form-control" [(ngModel)]="nuevoUsuario.password" name="password" required>
             </div>
             <div class="row g-2 mb-4">
@@ -63,14 +63,14 @@
                 <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.telefono" name="telefono">
               </div>
               <div class="col-md-6">
-                <label class="form-label small fw-semibold text-muted">Rol del Sistema</label>
+                <label class="form-label small fw-semibold text-muted">Rol del sistema</label>
                 <select class="form-select" [(ngModel)]="nuevoUsuario.rol" name="rol">
-                  <option value="MEDICO">Médico Clínico</option>
+                  <option value="MEDICO">Médico clínico</option>
                   <option value="ADMIN">Administrador</option>
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 rounded-2">Guardar en Neon DB</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 rounded-2">Guardar en el sistema</button>
           </form>
         </div>
       </div>
@@ -79,7 +79,7 @@
     <div class="col-lg-7">
       <div class="card shadow-sm border-0 rounded-3">
         <div class="card-header bg-light border-0 fw-bold py-3 d-flex justify-content-between align-items-center">
-          <span>Personal Médico en Activo</span>
+          <span>Personal médico en activo</span>
           <span class="badge bg-secondary text-white">{{ listaMedicos.length }} Médicos</span>
         </div>
         <div class="card-body p-0">
@@ -126,7 +126,7 @@
     <div class="col-lg-7">
       <div class="card shadow-sm border-0 rounded-3">
         <div class="card-header bg-light border-0 py-3">
-          <label class="form-label fw-bold text-secondary mb-2">Buscador de Hospitales de España</label>
+          <label class="form-label fw-bold text-secondary mb-2">Buscador de hospitales de España</label>
           <input type="text" class="form-control" placeholder="Escribe el nombre del centro o el municipio... (Ej: Virgen o Madrid)" [(ngModel)]="filtroCentro" name="filtroCentro">
         </div>
         <div class="card-body p-0">
@@ -135,9 +135,9 @@
               <thead class="table-light text-muted small position-sticky top-0">
                 <tr>
                   <th class="ps-3">ID</th>
-                  <th>Nombre del Centro Hospitalario</th>
-                  <th>Municipio</th>
-                  <th class="text-end pe-3">Acción</th>
+                  <th>Nombre del centro hospitalario</th>
+                  <th class="ps-4">Municipio</th>
+                  <th class="ps-4">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -168,7 +168,7 @@
       @if (centroSeleccionado) {
         <div class="card shadow-sm border-0 border-start border-4 border-primary rounded-3">
           <div class="card-header bg-primary text-white fw-bold py-3">
-            🔗 Vincular Personal Sanitario
+            🔗 Vincular personal sanitario
           </div>
           <div class="card-body p-4">
             <p class="small text-muted">Vas a asignar un profesional médico para pasar consulta operativa en el siguiente centro:</p>
@@ -177,7 +177,7 @@
 
             <form (ngSubmit)="ejecutarVinculacion()">
               <div class="mb-4">
-                <label class="form-label small fw-semibold text-muted">Elegir Médico Disponible</label>
+                <label class="form-label small fw-semibold text-muted">Elegir médico disponible</label>
                 <select class="form-select form-select-lg fs-6" [(ngModel)]="vinculacion.id_medico" name="id_medico" required>
                   <option value="" disabled selected>-- Elige un médico de la lista --</option>
                   @for (medico of listaMedicos; track medico.id) {
@@ -188,7 +188,7 @@
 
               <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-success flex-grow-1 fw-bold py-2" [disabled]="!vinculacion.id_medico">
-                  Confirmar Asignación
+                  Confirmar asignación
                 </button>
                 <button type="button" class="btn btn-light border" (click)="centroSeleccionado = null">
                   Cancelar
@@ -239,7 +239,7 @@
                   <td class="fw-bold text-dark">
                     {{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }}
                   </td>
-                  <td class="text-start ps-4">
+                  <td class="ps-4">
                     <div class="fw-semibold text-dark">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}</div>
                   </td>
                   <td>
@@ -276,7 +276,7 @@
     
     @if (!pacienteSeleccionado) {
       <div class="card shadow-sm border-0 rounded-3 p-4 bg-white mb-4">
-        <h5 class="fw-bold text-dark mb-2">Buscador e Inspector de Historiales Clínicos</h5>
+        <h5 class="fw-bold text-dark mb-2">Buscador e inspector de historiales clínicos</h5>
         <p class="text-muted small mb-3">Acceso de auditoría de administración para Selene Salud. Filtra y selecciona un paciente.</p>
         
         <div class="input-group mb-3 shadow-sm">
@@ -298,11 +298,11 @@
               @for (paciente of pacientesGlobales; track paciente.id) {
                 <tr>
                   <td class="fw-bold text-secondary">#{{ paciente.id }}</td>
-                  <td class="text-start ps-4 fw-semibold text-dark">{{ paciente.nombre }} {{ paciente.apellidos }}</td>
+                  <td class="ps-4 fw-semibold text-dark">{{ paciente.nombre }} {{ paciente.apellidos }}</td>
                   <td class="text-muted small">{{ paciente.telefono }}</td>
                   <td>
                     <button class="btn btn-sm btn-outline-secondary fw-bold px-3" (click)="seleccionarPaciente(paciente)">
-                      Inspeccionar Informes
+                      Inspeccionar informes
                     </button>
                   </td>
                 </tr>
@@ -320,7 +320,7 @@
     @if (pacienteSeleccionado) {
       <div class="mb-3">
         <button class="btn btn-sm btn-outline-secondary fw-bold shadow-sm" (click)="volverAlBuscador()">
-          ⬅️ Volver al Inspector Global
+          ⬅️ Volver al inspector global
         </button>
       </div>
 
@@ -329,12 +329,12 @@
           <div class="fs-1"></div>
           <div>
             <h4 class="fw-bold mb-0">{{ pacienteSeleccionado.nombre }} {{ pacienteSeleccionado.apellidos }}</h4>
-            <p class="mb-0 small opacity-75">Modo Auditoría de Administración | ID: #{{ pacienteSeleccionado.id }}</p>
+            <p class="mb-0 small opacity-75">Modo auditoría de administración | ID: #{{ pacienteSeleccionado.id }}</p>
           </div>
         </div>
       </div>
 
-      <h5 class="fw-bold text-dark mb-3">Informes Emitidos por el Personal Médico (Total: {{ historialClinico.length }})</h5>
+      <h5 class="fw-bold text-dark mb-3">Informes emitidos por el personal médico (Total: {{ historialClinico.length }})</h5>
 
       @if (historialClinico.length === 0) {
         <div class="card border-0 shadow-sm p-5 text-center rounded-3 bg-white">
@@ -346,7 +346,7 @@
             <div class="col-12">
               <div class="card shadow-sm border-0 border-start border-4 border-secondary rounded-3 bg-white">
                 <div class="card-header bg-light border-0 py-2 d-flex justify-content-between align-items-center">
-                  <span class="text-dark fw-bold small">Fecha de Atención: {{ informe.fecha_cita | date:'dd/MM/yyyy HH:mm' }} Hs</span>
+                  <span class="text-dark fw-bold small">Fecha de atención: {{ informe.fecha_cita | date:'dd/MM/yyyy HH:mm' }} Hs</span>
                   <span class="badge bg-dark rounded-pill">Informe #{{ informe.informe_id }}</span>
                 </div>
                 <div class="card-body">
@@ -357,7 +357,7 @@
                   }
                   <hr class="my-2 opacity-50">
                   <div class="text-end text-muted small">
-                    Facultativo Firmante: <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
+                    Facultativo firmante: <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
                   </div>
                 </div>
               </div>

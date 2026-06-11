@@ -1,46 +1,69 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+<div class="container-fluid d-flex justify-content-center align-items-center bg-light bg-opacity-25"
+  style="min-height: 85vh;">
   <div class="row w-100 justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow-lg border-0 rounded-4">
-        <div class="card-body p-5">
-          
-          <div class="text-center mb-4">
-            <h2 class="fw-bold text-primary">Selene Salud</h2>
-            <p class="text-muted">Panel de Gestión Interna Hospitalaria</p>
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+
+      <div class="card shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+        <div class="bg-primary" style="height: 5px;"></div>
+
+        <div class="card-body p-4 p-md-5">
+
+          <div class="text-center mb-5">
+
+            <h2 class="fw-bold text-primary mb-1 tracking-tight" style="font-size: 2rem;">
+              <img src="logo2.png" alt="Logo Selene Salud" height="40" class="d-inline-block transition-all mb-2">
+              Selene<span class="fw-light text-secondary">Salud</span>
+            </h2>
+            <span
+              class="badge bg-light text-primary px-3 py-2 rounded-pill small fw-semibold mt-2 border border-primary border-opacity-10">
+              Panel de Gestión Interna Hospitalaria
+            </span>
           </div>
 
-          <form (ngSubmit)="ejecutarLogin()">
-            
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Correo Electrónico</label>
-              <input 
-                type="email" 
-                name="email" 
-                class="form-control form-control-lg" 
-                placeholder="ejemplo.admin@selene.com"
-                [(ngModel)]="datosFormulario.email" 
-                required>
-            </div>
+          <form (ngSubmit)="ejecutarLogin()" autocomplete="off">
 
             <div class="mb-4">
-              <label class="form-label fw-semibold">Contraseña</label>
-              <input 
-                type="password" 
-                name="password" 
-                class="form-control form-control-lg" 
-                placeholder="••••••••"
-                [(ngModel)]="datosFormulario.password" 
-                required>
+              <label class="form-label text-secondary small fw-bold text-uppercase tracking-wider">Correo
+                Electrónico</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 text-muted px-3">
+                  <i class="bi bi-envelope-fill"></i>
+                </span>
+                <input type="email" name="email"
+                  class="form-control form-control-lg bg-light border-0 px-3 py-2.5 small text-dark"
+                  placeholder="ejemplo.admin@selene.com" [(ngModel)]="datosFormulario.email" required
+                  style="font-size: 0.95rem;">
+              </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 shadow-sm">
-              Iniciar Sesión
+            <div class="mb-5">
+              <label class="form-label text-secondary small fw-bold text-uppercase tracking-wider">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 text-muted px-3">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
+                <input type="password" name="password"
+                  class="form-control form-control-lg bg-light border-0 px-3 py-2.5 text-dark" placeholder="••••••••"
+                  [(ngModel)]="datosFormulario.password" required style="font-size: 0.95rem;">
+              </div>
+            </div>
+
+            <button type="submit"
+              class="btn btn-primary btn-lg w-100 rounded-3 py-3 fw-bold shadow-sm border-0 transition-all d-flex align-items-center justify-content-center gap-2">
+              <span>Entrar al Panel</span>
+              <i class="bi bi-arrow-right-short fs-5"></i>
             </button>
-            
+
           </form>
 
         </div>
       </div>
+
+      <div class="text-center mt-4">
+        <p class="text-muted small mb-0">&copy; Selene Salud. Sistema de gestión de citas médicas.<br> Por Gonzalo
+          Requena Eslava</p>
+      </div>
+
     </div>
   </div>
 </div>
