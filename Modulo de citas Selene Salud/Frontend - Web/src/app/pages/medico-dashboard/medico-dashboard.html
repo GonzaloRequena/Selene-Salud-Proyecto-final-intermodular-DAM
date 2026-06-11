@@ -1,8 +1,9 @@
 <div class="row mb-3">
     <div class="col-md-8">
-        <h2 class="fw-bold text-dark">Panel del profesional sanitario</h2>
-        <p class="text-muted mb-4">Bienvenido/a, Dr/a. <span class="text-primary fw-semibold">{{ medicoNombre }}</span>.
-            Gestión de consultas en tiempo real.</p>
+        <h2 class="fw-bold text-dark">{{ langService.get('medico_title') }}</h2>
+        <p class="text-muted mb-4">{{ langService.get('medico_welcome') }} <span class="text-primary fw-semibold">{{
+                medicoNombre }}</span>.
+            {{ langService.get('medico_subtitle') }}</p>
     </div>
 </div>
 
@@ -11,19 +12,20 @@
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'citas'"
             (click)="pestanaActiva = 'citas'">
-            Consultas del día (En espera: {{ citasPendientes.length }})
+            {{ langService.get('medico_tab_citas') }} ({{ langService.get('medico_en_espera') }} {{
+            citasPendientes.length }})
         </button>
     </li>
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'agenda'"
             (click)="pestanaActiva = 'agenda'">
-            Apertura de agenda y turnos
+            {{ langService.get('medico_tab_agenda') }}
         </button>
     </li>
     <li class="nav-item">
         <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'informes'"
             (click)="pestanaActiva = 'informes'; volverAlBuscador()">
-            Historial de informes
+            {{ langService.get('medico_tab_informes') }}
         </button>
     </li>
 </ul>
@@ -33,31 +35,31 @@
 
 <div class="card shadow-sm border-0 rounded-3 mb-4 animate__animated animate__fadeIn">
     <div class="card-header bg-primary text-white fw-bold py-3 d-flex justify-content-between align-items-center">
-        <span>Cola de pacientes en espera / Pendientes</span>
+        <span>{{ langService.get('medico_cola_espera') }}</span>
         <span class="badge bg-white text-primary rounded-pill fw-bold">{{ citasPendientes.length }}</span>
     </div>
     <div class="card-body p-0">
         @if (citasPendientes.length === 0) {
         <div class="text-center py-5">
-            <p class="text-muted fs-5 mb-1">¡Excelente! No tienes pacientes en la cola de espera.</p>
-            <p class="text-muted small mb-0">Todas las citas asignadas han sido completadas con éxito.</p>
+            <p class="text-muted fs-5 mb-1">{{ langService.get('medico_sin_pacientes_title') }}</p>
+            <p class="text-muted small mb-0">{{ langService.get('medico_sin_pacientes_sub') }}</p>
         </div>
         } @else {
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0 text-center">
                 <thead class="table-light text-secondary small text-uppercase">
                     <tr>
-                        <th>Horario</th>
-                        <th>Paciente</th>
-                        <th>Centro sanitario</th>
-                        <th>Estado</th>
-                        <th>Acción Clínica</th>
+                        <th>{{ langService.get('medico_th_horario') }}</th>
+                        <th>{{ langService.get('medico_th_paciente') }}</th>
+                        <th>{{ langService.get('medico_th_centro') }}</th>
+                        <th>{{ langService.get('medico_th_estado') }}</th>
+                        <th>{{ langService.get('medico_th_accion') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @for (cita of citasPendientes; track cita.cita_id || cita.id) {
                     <tr>
-                        <td class="fw-bold text-dark">{{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }} Hs</td>
+                        <td class="fw-bold text-dark">{{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }}h</td>
                         <td class="ps-4">
                             <div class="fw-semibold">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}</div>
                         </td>
@@ -71,7 +73,7 @@
                         <td>
                             <button class="btn btn-sm btn-success fw-bold px-3 py-1.5 shadow-sm"
                                 (click)="abrirModoConsulta(cita)">
-                                Atender paciente
+                                {{ langService.get('medico_btn_atender') }}
                             </button>
                         </td>
                     </tr>
@@ -87,8 +89,8 @@
 <div class="card shadow-sm border-0 rounded-3 bg-light animate__animated animate__fadeIn">
     <div class="card-header bg-secondary text-white fw-bold py-2.5 d-flex justify-content-between align-items-center"
         (click)="historialColapsado = !historialColapsado" style="cursor: pointer; user-select: none;">
-        <span class="small">{{ historialColapsado ? '➕ Mostrar' : '➖ Ocultar' }} Historial de consultas procesadas /
-            Cerradas</span>
+        <span class="small">{{ historialColapsado ? langService.get('medico_historial_mostrar') :
+            langService.get('medico_historial_ocultar') }}</span>
         <span class="badge bg-dark rounded-pill small">{{ citasFinalizadas.length }}</span>
     </div>
 
@@ -98,11 +100,11 @@
             <table class="table table-sm align-middle mb-0 text-center opacity-75">
                 <thead class="table-light text-secondary table-xs text-uppercase">
                     <tr>
-                        <th>Horario</th>
-                        <th>Paciente</th>
-                        <th>Centro sanitario</th>
-                        <th>Estado Final</th>
-                        <th>Acción</th>
+                        <th>{{ langService.get('medico_th_horario') }}</th>
+                        <th>{{ langService.get('medico_th_paciente') }}</th>
+                        <th>{{ langService.get('medico_th_centro') }}</th>
+                        <th>{{ langService.get('medico_th_estado_final') }}</th>
+                        <th>{{ langService.get('medico_th_accion') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -123,7 +125,7 @@
                         </td>
                         <td>
                             <button class="btn btn-xs btn-outline-secondary disabled px-2 py-0.5"
-                                style="font-size: 0.75rem;">Registro cerrado</button>
+                                style="font-size: 0.75rem;">{{ langService.get('medico_btn_cerrado') }}</button>
                         </td>
                     </tr>
                     }
@@ -141,21 +143,21 @@
 
     @if (!pacienteSeleccionado) {
     <div class="card shadow-sm border-0 rounded-3 p-4 bg-white mb-4">
-        <h5 class="fw-bold text-dark mb-3">Buscador global de pacientes asignados</h5>
+        <h5 class="fw-bold text-dark mb-3">{{ langService.get('medico_buscador_titulo') }}</h5>
         <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-light text-secondary border-end-0">👤</span>
             <input type="text" class="form-control border-start-0 py-2"
-                placeholder="Escribe el nombre o apellidos del paciente para filtrar..." [(ngModel)]="busquedaPaciente">
+                placeholder="{{ langService.get('medico_buscador_placeholder') }}" [(ngModel)]="busquedaPaciente">
         </div>
 
         <div class="table-responsive mt-3 rounded-3 border">
             <table class="table table-hover align-middle mb-0 text-center">
                 <thead class="table-light text-secondary small text-uppercase">
                     <tr>
-                        <th>Código ID</th>
-                        <th>Nombre completo</th>
-                        <th>Teléfono de contacto</th>
-                        <th>Acceso técnico</th>
+                        <th>{{ langService.get('medico_th_codigo') }}</th>
+                        <th>{{ langService.get('medico_th_nombre_completo') }}</th>
+                        <th>{{ langService.get('medico_th_telefono') }}</th>
+                        <th>{{ langService.get('medico_th_acceso') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -168,14 +170,14 @@
                         <td>
                             <button class="btn btn-sm btn-outline-primary fw-bold px-3"
                                 (click)="seleccionarPaciente(paciente)">
-                                Ver historial clínico
+                                {{ langService.get('medico_btn_ver_historial') }}
                             </button>
                         </td>
                     </tr>
                     } @empty {
                     <tr>
-                        <td colspan="4" class="text-center py-4 text-muted small">No se encontraron pacientes que
-                            coincidan con la búsqueda.</td>
+                        <td colspan="4" class="text-center py-4 text-muted small">{{
+                            langService.get('medico_no_resultados') }}</td>
                     </tr>
                     }
                 </tbody>
@@ -187,9 +189,9 @@
     @if (pacienteSeleccionado) {
     <div class="mb-3 d-flex justify-content-between align-items-center">
         <button class="btn btn-sm btn-outline-secondary fw-bold shadow-sm" (click)="volverAlBuscador()">
-            ⬅️ Volver al buscador de expedientes
+            {{ langService.get('medico_btn_volver_buscador') }}
         </button>
-        <span class="text-muted small">Expediente clínico encriptado</span>
+        <span class="text-muted small">{{ langService.get('medico_encriptado') }}</span>
     </div>
 
     <div class="card shadow-sm border-0 rounded-3 bg-primary text-white p-4 mb-4">
@@ -197,18 +199,19 @@
             <div class="fs-1">👤</div>
             <div>
                 <h4 class="fw-bold mb-0">{{ pacienteSeleccionado.nombre }} {{ pacienteSeleccionado.apellidos }}</h4>
-                <p class="mb-0 small opacity-75">ID de paciente: #{{ pacienteSeleccionado.id }} | Teléfono: {{
+                <p class="mb-0 small opacity-75">{{ langService.get('medico_paciente_id_lbl') }} #{{
+                    pacienteSeleccionado.id }} | {{ langService.get('medico_telefono_lbl') }} {{
                     pacienteSeleccionado.telefono }}</p>
             </div>
         </div>
     </div>
 
-    <h5 class="fw-bold text-secondary mb-3">Línea de tiempo de evolución clínica (Total: {{ historialClinico.length
-        }})</h5>
+    <h5 class="fw-bold text-secondary mb-3">{{ langService.get('medico_linea_evolucion') }} ({{
+        langService.get('medico_total') }} {{ historialClinico.length }})</h5>
 
     @if (historialClinico.length === 0) {
     <div class="card border-0 shadow-sm p-5 text-center rounded-3 bg-white">
-        <p class="text-muted fs-5 mb-0">Este paciente no registra informes clínicos previos en Selene Salud.</p>
+        <p class="text-muted fs-5 mb-0">{{ langService.get('medico_sin_informes') }}</p>
     </div>
     } @else {
     <div class="row g-3">
@@ -216,22 +219,28 @@
         <div class="col-12">
             <div class="card shadow-sm border-0 border-start border-4 border-primary rounded-3 bg-white">
                 <div class="card-header bg-light border-0 py-2.5 d-flex justify-content-between align-items-center">
-                    <span class="text-dark fw-bold small">Atendido el: {{ informe.fecha_cita | date:'dd/MM/yyyy
-                        HH:mm' }} Hs</span>
-                    <span class="badge bg-secondary rounded-pill">Informe #{{ informe.informe_id }}</span>
+                    <span class="text-dark fw-bold small">{{ langService.get('medico_atendido_el') }} {{
+                        informe.fecha_cita | date:'dd/MM/yyyy
+                        HH:mm' }}h</span>
+                    <span class="badge bg-secondary rounded-pill">{{ langService.get('medico_informe_num') }}{{
+                        informe.informe_id }}</span>
                 </div>
                 <div class="card-body">
-                    <p class="mb-2"><strong>Diagnóstico:</strong> <span class="text-dark">{{ informe.diagnostico
+                    <p class="mb-2"><strong>{{ langService.get('medico_diagnostico_lbl') }} </strong> <span
+                            class="text-dark">{{ informe.diagnostico
                             }}</span></p>
-                    <p class="mb-2"><strong>Tratamiento prescrito:</strong> <span class="text-success fw-medium">{{
+                    <p class="mb-2"><strong>{{ langService.get('medico_tratamiento_lbl') }} </strong> <span
+                            class="text-success fw-medium">{{
                             informe.tratamiento }}</span></p>
                     @if (informe.observaciones) {
-                    <p class="mb-2 small text-secondary"><strong>Observaciones:</strong> <em>{{ informe.observaciones
+                    <p class="mb-2 small text-secondary"><strong>{{ langService.get('medico_observaciones_lbl') }}
+                        </strong> <em>{{ informe.observaciones
                             }}</em></p>
                     }
                     <hr class="my-2 opacity-50">
                     <div class="text-end text-muted small">
-                        Emitido por: <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
+                        {{ langService.get('medico_emitido_por') }} <strong>Dr/a. {{ informe.medico_nombre }} {{
+                            informe.medico_apellidos }}</strong>
                     </div>
                 </div>
             </div>
@@ -248,50 +257,55 @@
     <div class="col-lg-4">
         <div class="card shadow-sm border-0 border-start border-4 border-success rounded-3 bg-light">
             <div class="card-body">
-                <h5 class="fw-bold text-success mb-3">👤 Paciente en consulta</h5>
+                <h5 class="fw-bold text-success mb-3">{{ langService.get('medico_paciente_consulta') }}</h5>
                 <h4 class="fw-bold text-dark mb-1">{{ citaSeleccionada.paciente_nombre }} {{
                     citaSeleccionada.paciente_apellidos }}</h4>
-                <p class="text-muted small mb-3">Historial clínico digital activo</p>
+                <p class="text-muted small mb-3">{{ langService.get('medico_historial_activo') }}</p>
                 <hr>
-                <p class="mb-1 small text-secondary"><strong>Cita ID:</strong> #{{ citaSeleccionada.cita_id ||
+                <p class="mb-1 small text-secondary"><strong>{{ langService.get('medico_cita_id_lbl') }} </strong> #{{
+                    citaSeleccionada.cita_id ||
                     citaSeleccionada.id }}</p>
-                <p class="mb-1 small text-secondary"><strong>Centro:</strong> {{ citaSeleccionada.centro_nombre }}</p>
-                <p class="mb-0 small text-secondary"><strong>Fecha/Hora:</strong> {{ citaSeleccionada.fecha_hora |
-                    date:'dd/MM/yyyy - HH:mm' }} Hs</p>
+                <p class="mb-1 small text-secondary"><strong>{{ langService.get('medico_centro_lbl') }} </strong> {{
+                    citaSeleccionada.centro_nombre }}</p>
+                <p class="mb-0 small text-secondary"><strong>{{ langService.get('medico_fecha_hora_lbl') }} </strong> {{
+                    citaSeleccionada.fecha_hora |
+                    date:'dd/MM/yyyy - HH:mm' }}h</p>
             </div>
         </div>
-        <button class="btn btn-outline-danger w-100 mt-3 fw-bold py-2" (click)="citaSeleccionada = null">Suspender
-            consulta / Volver</button>
+        <button class="btn btn-outline-danger w-100 mt-3 fw-bold py-2" (click)="citaSeleccionada = null">{{
+            langService.get('medico_btn_suspender') }}</button>
     </div>
 
     <div class="col-lg-8">
         <div class="card shadow-sm border-0 rounded-3">
-            <div class="card-header bg-dark text-white fw-bold py-3">Entrada de datos clínicos e informe de alta
+            <div class="card-header bg-dark text-white fw-bold py-3">{{ langService.get('medico_datos_clinicos_title')
+                }}
             </div>
             <div class="card-body p-4">
                 <form (ngSubmit)="ejecutarGuardarInforme()">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">1. Diagnóstico clínico principal *</label>
+                        <label class="form-label fw-semibold text-secondary">{{
+                            langService.get('medico_form_diagnostico') }}</label>
                         <textarea class="form-control border-secondary-subtle" name="diagnostico" rows="3"
-                            placeholder="Ej: Faringoamigdalitis aguda bacteriana..."
+                            placeholder="{{ langService.get('medico_form_diagnostico_ph') }}"
                             [(ngModel)]="nuevoInforme.diagnostico" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">2. Tratamiento y receta electrónica
-                            *</label>
+                        <label class="form-label fw-semibold text-secondary">{{
+                            langService.get('medico_form_tratamiento') }}</label>
                         <textarea class="form-control border-secondary-subtle" name="tratamiento" rows="3"
-                            placeholder="Ej: Amoxicilina 850mg cada 8 horas..." [(ngModel)]="nuevoInforme.tratamiento"
-                            required></textarea>
+                            placeholder="{{ langService.get('medico_form_tratamiento_ph') }}"
+                            [(ngModel)]="nuevoInforme.tratamiento" required></textarea>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label fw-semibold text-secondary">3. Recomendaciones y observaciones
-                            generales</label>
+                        <label class="form-label fw-semibold text-secondary">{{
+                            langService.get('medico_form_observaciones') }}</label>
                         <textarea class="form-control border-secondary-subtle" name="observaciones" rows="2"
-                            placeholder="Ej: Reposo relativo durante 48 horas..."
+                            placeholder="{{ langService.get('medico_form_observaciones_ph') }}"
                             [(ngModel)]="nuevoInforme.observaciones"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm py-2.5">Registrar
-                        informe y cerrar ficha clínica</button>
+                    <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm py-2.5">{{
+                        langService.get('medico_btn_registrar') }}</button>
                 </form>
             </div>
         </div>
@@ -303,65 +317,78 @@
 <div class="row g-4 animate__animated animate__fadeIn">
     <div class="col-lg-5">
         <div class="card shadow-sm border-0 rounded-3">
-            <div class="card-header bg-dark text-white fw-bold py-3">Publicar franja de consulta</div>
+            <div class="card-header bg-dark text-white fw-bold py-3">{{ langService.get('medico_agenda_publicar') }}
+            </div>
             <div class="card-body p-4">
                 <form (ngSubmit)="ejecutarCrearAgenda()">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">Selecciona el centro médico</label>
+                        <label class="form-label fw-semibold text-secondary">{{
+                            langService.get('medico_agenda_selecciona_centro') }}</label>
                         <select class="form-select" name="id_centro" [(ngModel)]="nuevaDisponibilidad.id_centro"
                             required>
-                            <option value="" disabled selected>-- Elige uno de tus centros asignados --</option>
+                            <option value="" disabled selected>{{ langService.get('medico_agenda_centro_default') }}
+                            </option>
                             @for (centro of listaCentros; track centro.id) {
                             <option [value]="centro.id">{{ centro.nombre }} ({{ centro.municipio }})</option>
                             }
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-secondary">Fecha de consulta</label>
+                        <label class="form-label fw-semibold text-secondary">{{ langService.get('medico_agenda_fecha')
+                            }}</label>
                         <input type="date" class="form-control" name="fecha" [(ngModel)]="nuevaDisponibilidad.fecha"
                             required>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="form-label fw-semibold text-secondary">Hora de inicio</label>
+                            <label class="form-label fw-semibold text-secondary">{{
+                                langService.get('medico_agenda_inicio') }}</label>
                             <input type="time" class="form-control" name="hora_inicio"
                                 [(ngModel)]="nuevaDisponibilidad.hora_inicio" required>
                         </div>
                         <div class="col">
-                            <label class="form-label fw-semibold text-secondary">Hora de fin</label>
+                            <label class="form-label fw-semibold text-secondary">{{ langService.get('medico_agenda_fin')
+                                }}</label>
                             <input type="time" class="form-control" name="hora_fin"
                                 [(ngModel)]="nuevaDisponibilidad.hora_fin" required>
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label fw-semibold text-secondary">Duración estimada por paciente</label>
+                        <label class="form-label fw-semibold text-secondary">{{
+                            langService.get('medico_agenda_duracion') }}</label>
                         <select class="form-select" name="duracion_minutos"
                             [(ngModel)]="nuevaDisponibilidad.duracion_minutos">
-                            <option [value]="10">10 Minutos</option>
-                            <option [value]="15">15 Minutos (Recomendado)</option>
-                            <option [value]="20">20 Minutos</option>
-                            <option [value]="30">30 Minutos</option>
+                            <option [value]="10">10 {{ langService.get('medico_minutos') }}</option>
+                            <option [value]="15">15 {{ langService.get('medico_minutos_recomendado') }}</option>
+                            <option [value]="20">20 {{ langService.get('medico_minutos') }}</option>
+                            <option [value]="30">30 {{ langService.get('medico_minutos') }}</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2.5 shadow-sm">Generar bloques de
-                        disponibilidad</button>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2.5 shadow-sm">{{
+                        langService.get('medico_btn_generar_bloques') }}</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="col-lg-7">
         <div class="card shadow-sm border-0 bg-light p-4 rounded-3 h-100">
-            <h5 class="fw-bold text-dark mb-3">⚙️ ¿Cómo funciona la generación automática de turnos?</h5>
-            <p class="text-muted small">Cuando pulsas el botón, el backend toma tu rango horario completo y realiza una
-                segmentación matemática automática en la base de datos de Neon.</p>
+            <h5 class="fw-bold text-dark mb-3">{{
+                langService.get('medico_ayuda_titulo') }}</h5>
+            <p class="text-muted small">{{
+                langService.get('medico_ayuda_p1') }}</p>
             <ul class="text-muted small ps-3">
-                <li class="mb-2"><strong>Protección de identidad:</strong> La API inyecta tu ID de usuario de forma
-                    segura mediante el token. No puedes suplantar el horario de otro médico.</li>
-                <li class="mb-2"><strong>Mapeo de intervalos:</strong> Si abres de 09:00 a 10:00 con intervalos de 15
-                    minutos, el sistema generará automáticamente 4 huecos independientes listos para que los pacientes
-                    los reserven desde la aplicación móvil.</li>
-                <li class="mb-0"><strong>Centros asignados:</strong> Solo aparecen en tu lista los centros médicos con
-                    los que el Administrador te ha vinculado formalmente desde el panel global.</li>
+                <li class="mb-2">
+                    <strong>{{ langService.get('medico_ayuda_li1_title') }}</strong> {{
+                    langService.get('medico_ayuda_li1_desc') }}
+                </li>
+                <li class="mb-2">
+                    <strong>{{ langService.get('medico_ayuda_li2_title') }}</strong> {{
+                    langService.get('medico_ayuda_li2_desc') }}
+                </li>
+                <li class="mb-0">
+                    <strong>{{ langService.get('medico_ayuda_li3_title') }}</strong> {{
+                    langService.get('medico_ayuda_li3_desc') }}
+                </li>
             </ul>
         </div>
     </div>

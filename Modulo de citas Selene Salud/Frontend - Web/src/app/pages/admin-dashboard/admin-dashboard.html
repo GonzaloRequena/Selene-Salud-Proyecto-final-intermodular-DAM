@@ -1,29 +1,29 @@
 <div class="row mb-3">
   <div class="col">
-    <h2 class="fw-bold text-dark">Panel global de administración</h2>
-    <p class="text-muted mb-4">Gestión operativa interna de la red de salud Selene Salud.</p>
+    <h2 class="fw-bold text-dark">{{ langService.get('admin_title') }}</h2>
+    <p class="text-muted mb-4">{{ langService.get('admin_subtitle') }}</p>
   </div>
 </div>
 
 <ul class="nav nav-tabs mb-4 fw-semibold">
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'personal'" (click)="pestanaActiva = 'personal'">
-      Plantilla y altas
+      {{ langService.get('admin_tab_personal') }}
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'centros'" (click)="pestanaActiva = 'centros'">
-      Centros de salud ({{ listaCentros.length }})
+      {{ langService.get('admin_tab_centros') }} ({{ listaCentros.length }})
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'citas'" (click)="pestanaActiva = 'citas'">
-      Auditoría de citas
+      {{ langService.get('admin_tab_citas') }}
     </button>
   </li>
   <li class="nav-item">
     <button class="nav-link text-secondary" [class.active]="pestanaActiva === 'informes'" (click)="pestanaActiva = 'informes'; volverAlBuscador()">
-      Historial clínico global
+      {{ langService.get('admin_tab_informes') }}
     </button>
   </li>
 </ul>
@@ -32,45 +32,45 @@
   <div class="row g-4 animate__animated animate__fadeIn">
     <div class="col-lg-5">
       <div class="card shadow-sm border-0 rounded-3">
-        <div class="card-header bg-dark text-white fw-bold py-3">➕ Registrar personal sanitario</div>
+        <div class="card-header bg-dark text-white fw-bold py-3">{{ langService.get('admin_reg_titulo') }}</div>
         <div class="card-body p-4">
           <form (ngSubmit)="ejecutarRegistro()">
             <div class="row g-2 mb-3">
               <div class="col-md-6">
-                <label class="form-label small fw-semibold text-muted">Nombre</label>
+                <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_nombre') }}</label>
                 <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.nombre" name="nombre" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label small fw-semibold text-muted">Apellidos</label>
+                <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_apellidos') }}</label>
                 <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.apellidos" name="apellidos" required>
               </div>
             </div>
             <div class="mb-3">
-              <label class="form-label small fw-semibold text-muted">DNI / NIE</label>
+              <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_dni') }}</label>
               <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.dni_nie" name="dni_nie" required>
             </div>
             <div class="mb-3">
-              <label class="form-label small fw-semibold text-muted">Correo electrónico</label>
+              <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_email') }}</label>
               <input type="email" class="form-control" [(ngModel)]="nuevoUsuario.email" name="email" required>
             </div>
             <div class="mb-3">
-              <label class="form-label small fw-semibold text-muted">Contraseña inicial</label>
+              <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_pass') }}</label>
               <input type="password" class="form-control" [(ngModel)]="nuevoUsuario.password" name="password" required>
             </div>
             <div class="row g-2 mb-4">
               <div class="col-md-6">
-                <label class="form-label small fw-semibold text-muted">Teléfono</label>
+                <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_tel') }}</label>
                 <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.telefono" name="telefono">
               </div>
               <div class="col-md-6">
-                <label class="form-label small fw-semibold text-muted">Rol del sistema</label>
+                <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_reg_rol') }}</label>
                 <select class="form-select" [(ngModel)]="nuevoUsuario.rol" name="rol">
-                  <option value="MEDICO">Médico clínico</option>
-                  <option value="ADMIN">Administrador</option>
+                  <option value="MEDICO">{{ langService.get('admin_rol_medico') }}</option>
+                  <option value="ADMIN">{{ langService.get('admin_rol_admin') }}</option>
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 rounded-2">Guardar en el sistema</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 rounded-2">{{ langService.get('admin_btn_guardar') }}</button>
           </form>
         </div>
       </div>
@@ -79,17 +79,17 @@
     <div class="col-lg-7">
       <div class="card shadow-sm border-0 rounded-3">
         <div class="card-header bg-light border-0 fw-bold py-3 d-flex justify-content-between align-items-center">
-          <span>Personal médico en activo</span>
-          <span class="badge bg-secondary text-white">{{ listaMedicos.length }} Médicos</span>
+          <span>{{ langService.get('admin_lista_personal') }}</span>
+          <span class="badge bg-secondary text-white">{{ listaMedicos.length }} {{ langService.get('admin_medicos_tag') }}</span>
         </div>
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-light text-muted small text-uppercase">
                 <tr>
-                  <th class="ps-4 py-3">Profesional</th>
-                  <th class="py-3">DNI/NIE</th>
-                  <th class="py-3">Contacto</th>
+                  <th class="ps-4 py-3">{{ langService.get('admin_th_profesional') }}</th>
+                  <th class="py-3">{{ langService.get('admin_th_dni') }}</th>
+                  <th class="py-3">{{ langService.get('admin_th_contacto') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -107,7 +107,7 @@
                 } @empty {
                   <tr>
                     <td colspan="3" class="text-center py-5 text-muted">
-                      <p class="mb-0 fw-semibold">No se detectan médicos cargados. Revisa la consola o crea uno nuevo arriba.</p>
+                      <p class="mb-0 fw-semibold">{{ langService.get('admin_sin_medicos') }}</p>
                     </td>
                   </tr>
                 }
@@ -126,18 +126,18 @@
     <div class="col-lg-7">
       <div class="card shadow-sm border-0 rounded-3">
         <div class="card-header bg-light border-0 py-3">
-          <label class="form-label fw-bold text-secondary mb-2">Buscador de hospitales de España</label>
-          <input type="text" class="form-control" placeholder="Escribe el nombre del centro o el municipio... (Ej: Virgen o Madrid)" [(ngModel)]="filtroCentro" name="filtroCentro">
+          <label class="form-label fw-bold text-secondary mb-2">{{ langService.get('admin_centros_buscador') }}</label>
+          <input type="text" class="form-control" [placeholder]="langService.get('admin_centros_placeholder')" [(ngModel)]="filtroCentro" name="filtroCentro">
         </div>
         <div class="card-body p-0">
           <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-light text-muted small position-sticky top-0">
                 <tr>
-                  <th class="ps-3">ID</th>
-                  <th>Nombre del centro hospitalario</th>
-                  <th class="ps-4">Municipio</th>
-                  <th class="ps-4">Acción</th>
+                  <th class="ps-3">{{ langService.get('admin_th_id') }}</th>
+                  <th>{{ langService.get('admin_th_centro_nombre') }}</th>
+                  <th class="ps-4">{{ langService.get('admin_th_municipio') }}</th>
+                  <th class="ps-4">{{ langService.get('admin_th_accion') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -145,16 +145,16 @@
                   <tr [class.table-primary]="centroSeleccionado?.id === centro.id">
                     <td class="ps-3 text-muted small">#{{ centro.id }}</td>
                     <td><strong class="text-dark">{{ centro.nombre }}</strong></td>
-                    <td><span class="badge bg-light text-secondary border">{{ centro.municipio || 'Desconocido' }}</span></td>
+                    <td><span class="badge bg-light text-secondary border">{{ centro.municipio || langService.get('admin_desconocido') }}</span></td>
                     <td class="text-end pe-3">
                       <button class="btn btn-sm btn-outline-primary fw-semibold" (click)="seleccionarCentro(centro)">
-                        Seleccionar
+                        {{ langService.get('admin_btn_seleccionar') }}
                       </button>
                     </td>
                   </tr>
                 } @empty {
                   <tr>
-                    <td colspan="4" class="text-center py-4 text-muted">Ningún centro coincide con la búsqueda.</td>
+                    <td colspan="4" class="text-center py-4 text-muted">{{ langService.get('admin_sin_centros') }}</td>
                   </tr>
                 }
               </tbody>
@@ -168,18 +168,18 @@
       @if (centroSeleccionado) {
         <div class="card shadow-sm border-0 border-start border-4 border-primary rounded-3">
           <div class="card-header bg-primary text-white fw-bold py-3">
-            🔗 Vincular personal sanitario
+            {{ langService.get('admin_vinculo_titulo') }}
           </div>
           <div class="card-body p-4">
-            <p class="small text-muted">Vas a asignar un profesional médico para pasar consulta operativa en el siguiente centro:</p>
+            <p class="small text-muted">{{ langService.get('admin_vinculo_desc') }}</p>
             <h5 class="fw-bold text-dark mb-1">{{ centroSeleccionado.nombre }}</h5>
-            <p class="text-secondary small mb-4">Municipio: {{ centroSeleccionado.municipio || 'Desconocido' }}</p>
+            <p class="text-secondary small mb-4">{{ langService.get('admin_vinculo_municipio') }} {{ centroSeleccionado.municipio || langService.get('admin_desconocido') }}</p>
 
             <form (ngSubmit)="ejecutarVinculacion()">
               <div class="mb-4">
-                <label class="form-label small fw-semibold text-muted">Elegir médico disponible</label>
+                <label class="form-label small fw-semibold text-muted">{{ langService.get('admin_vinculo_elegir') }}</label>
                 <select class="form-select form-select-lg fs-6" [(ngModel)]="vinculacion.id_medico" name="id_medico" required>
-                  <option value="" disabled selected>-- Elige un médico de la lista --</option>
+                  <option value="" disabled selected>{{ langService.get('admin_vinculo_default') }}</option>
                   @for (medico of listaMedicos; track medico.id) {
                     <option [value]="medico.id">{{ medico.apellidos }}, {{ medico.nombre }} (DNI: {{ medico.dni_nie }})</option>
                   }
@@ -188,10 +188,10 @@
 
               <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-success flex-grow-1 fw-bold py-2" [disabled]="!vinculacion.id_medico">
-                  Confirmar asignación
+                  {{ langService.get('admin_btn_confirmar') }}
                 </button>
                 <button type="button" class="btn btn-light border" (click)="centroSeleccionado = null">
-                  Cancelar
+                  {{ langService.get('admin_btn_cancelar') }}
                 </button>
               </div>
             </form>
@@ -200,8 +200,8 @@
       } @else {
         <div class="h-100 d-flex flex-column justify-content-center align-items-center text-center p-5 border rounded-3 bg-light border-dashed">
           <div class="fs-1 text-muted mb-2">👈</div>
-          <h6 class="fw-bold text-secondary">Ningún centro seleccionado</h6>
-          <p class="small text-muted px-3">Haz clic en el botón "Seleccionar" de cualquier hospital de la tabla para gestionarlo o vincularle un médico.</p>
+          <h6 class="fw-bold text-secondary">{{ langService.get('admin_no_seleccion_titulo') }}</h6>
+          <p class="small text-muted px-3">{{ langService.get('admin_no_seleccion_desc') }}</p>
         </div>
       }
     </div>
@@ -212,32 +212,32 @@
 @if (pestanaActiva === 'citas') {
   <div class="card shadow-sm border-0 rounded-3 animate__animated animate__fadeIn">
     <div class="card-header bg-dark text-white fw-bold py-3 d-flex justify-content-between align-items-center">
-      <span>Supervisor de Citas Médicas Globales</span>
-      <span class="badge bg-primary text-white">{{ listaCitas.length }} Citas en Sistema</span>
+      <span>{{ langService.get('admin_citas_titulo') }}</span>
+      <span class="badge bg-primary text-white">{{ listaCitas.length }} {{ langService.get('admin_citas_tag') }}</span>
     </div>
     
     <div class="card-body p-0">
       @if (listaCitas.length === 0) {
         <div class="text-center py-5">
-          <p class="text-muted mb-0">No se registra ninguna cita médica en la base de datos de Neon actualmente.</p>
+          <p class="text-muted mb-0">{{ langService.get('admin_citas_vacio') }}</p>
         </div>
       } @else {
         <div class="table-responsive">
           <table class="table table-hover align-middle mb-0 text-center">
             <thead class="table-light text-secondary small text-uppercase">
               <tr>
-                <th>Fecha y Hora</th>
-                <th>Paciente</th>
-                <th>Médico Asignado</th>
-                <th>Centro Sanitario</th>
-                <th>Estado de Cita</th>
+                <th>{{ langService.get('admin_th_fecha_hora') }}</th>
+                <th>{{ langService.get('admin_th_paciente') }}</th>
+                <th>{{ langService.get('admin_th_medico_asig') }}</th>
+                <th>{{ langService.get('admin_th_centro_sanit') }}</th>
+                <th>{{ langService.get('admin_th_estado_cita') }}</th>
               </tr>
             </thead>
             <tbody>
               @for (cita of listaCitas; track cita.cita_id) {
                 <tr>
                   <td class="fw-bold text-dark">
-                    {{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }}
+                    {{ cita.fecha_hora | date:'dd/MM/yyyy HH:mm' }}h
                   </td>
                   <td class="ps-4">
                     <div class="fw-semibold text-dark">{{ cita.paciente_nombre }} {{ cita.paciente_apellidos }}</div>
@@ -276,22 +276,22 @@
     
     @if (!pacienteSeleccionado) {
       <div class="card shadow-sm border-0 rounded-3 p-4 bg-white mb-4">
-        <h5 class="fw-bold text-dark mb-2">Buscador e inspector de historiales clínicos</h5>
-        <p class="text-muted small mb-3">Acceso de auditoría de administración para Selene Salud. Filtra y selecciona un paciente.</p>
-        
+        <h5 class="fw-bold text-dark mb-2">{{ langService.get('admin_inf_titulo') }}</h5>
+        <p class="text-muted small mb-3">{{ langService.get('admin_inf_desc') }}</p>
+
         <div class="input-group mb-3 shadow-sm">
           <span class="input-group-text bg-light border-end-0">👤</span>
-          <input type="text" class="form-control border-start-0 py-2" placeholder="Buscar paciente por nombre o apellidos..." [(ngModel)]="busquedaPaciente">
+          <input type="text" class="form-control border-start-0 py-2" placeholder="{{ langService.get('admin_inf_placeholder') }}" [(ngModel)]="busquedaPaciente">
         </div>
 
         <div class="table-responsive rounded-3 border mt-3">
           <table class="table table-hover align-middle mb-0 text-center">
             <thead class="table-light text-secondary small text-uppercase">
               <tr>
-                <th>ID Paciente</th>
-                <th>Nombre Completo</th>
-                <th>Teléfono</th>
-                <th>Auditoría</th>
+                <th>{{ langService.get('admin_th_paciente_id') }}</th>
+                <th>{{ langService.get('admin_th_nombre_completo') }}</th>
+                <th>{{ langService.get('admin_th_telefono') }}</th>
+                <th>{{ langService.get('admin_th_auditoria') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -302,13 +302,13 @@
                   <td class="text-muted small">{{ paciente.telefono }}</td>
                   <td>
                     <button class="btn btn-sm btn-outline-secondary fw-bold px-3" (click)="seleccionarPaciente(paciente)">
-                      Inspeccionar informes
+                      {{ langService.get('admin_btn_inspeccionar') }}
                     </button>
                   </td>
                 </tr>
               } @empty {
                 <tr>
-                  <td colspan="4" class="text-center py-4 text-muted small">No hay registros de pacientes concurrentes en el sistema.</td>
+                  <td colspan="4" class="text-center py-4 text-muted small">{{ langService.get('admin_inf_vacio') }}</td>
                 </tr>
               }
             </tbody>
@@ -320,7 +320,7 @@
     @if (pacienteSeleccionado) {
       <div class="mb-3">
         <button class="btn btn-sm btn-outline-secondary fw-bold shadow-sm" (click)="volverAlBuscador()">
-          ⬅️ Volver al inspector global
+          {{ langService.get('admin_btn_volver_inspector') }}
         </button>
       </div>
 
@@ -329,16 +329,16 @@
           <div class="fs-1"></div>
           <div>
             <h4 class="fw-bold mb-0">{{ pacienteSeleccionado.nombre }} {{ pacienteSeleccionado.apellidos }}</h4>
-            <p class="mb-0 small opacity-75">Modo auditoría de administración | ID: #{{ pacienteSeleccionado.id }}</p>
+            <p class="mb-0 small opacity-75">{{ langService.get('admin_modo_auditoria') }} {{ pacienteSeleccionado.id }}</p>
           </div>
         </div>
       </div>
 
-      <h5 class="fw-bold text-dark mb-3">Informes emitidos por el personal médico (Total: {{ historialClinico.length }})</h5>
+      <h5 class="fw-bold text-dark mb-3">{{ langService.get('admin_informes_emitidos') }}</h5>
 
       @if (historialClinico.length === 0) {
         <div class="card border-0 shadow-sm p-5 text-center rounded-3 bg-white">
-          <p class="text-muted fs-5 mb-0">Este paciente no registra informes clínicos grabados en el sistema.</p>
+          <p class="text-muted fs-5 mb-0">{{ langService.get('admin_sin_informes_global') }}</p>
         </div>
       } @else {
         <div class="row g-3">
@@ -346,18 +346,18 @@
             <div class="col-12">
               <div class="card shadow-sm border-0 border-start border-4 border-secondary rounded-3 bg-white">
                 <div class="card-header bg-light border-0 py-2 d-flex justify-content-between align-items-center">
-                  <span class="text-dark fw-bold small">Fecha de atención: {{ informe.fecha_cita | date:'dd/MM/yyyy HH:mm' }} Hs</span>
-                  <span class="badge bg-dark rounded-pill">Informe #{{ informe.informe_id }}</span>
+                  <span class="text-dark fw-bold small">{{ langService.get('admin_fecha_atencion') }} {{ informe.fecha_cita | date:'dd/MM/yyyy HH:mm' }}h</span>
+                  <span class="badge bg-dark rounded-pill">{{ langService.get('admin_informe') }}{{ informe.informe_id }}</span>
                 </div>
                 <div class="card-body">
-                  <p class="mb-2"><strong>Diagnóstico:</strong> <span class="text-dark">{{ informe.diagnostico }}</span></p>
-                  <p class="mb-2"><strong>Tratamiento:</strong> <span class="text-success fw-medium">{{ informe.tratamiento }}</span></p>
+                  <p class="mb-2"><strong>{{ langService.get('admin_diagnostico') }}</strong> <span class="text-dark">{{ informe.diagnostico }}</span></p>
+                  <p class="mb-2"><strong>{{ langService.get('admin_tratamiento') }}</strong> <span class="text-success fw-medium">{{ informe.tratamiento }}</span></p>
                   @if (informe.observaciones) {
-                    <p class="mb-2 small text-secondary"><strong>Observaciones:</strong> <em>{{ informe.observaciones }}</em></p>
+                    <p class="mb-2 small text-secondary"><strong>{{ langService.get('admin_observaciones') }}</strong> <em>{{ informe.observaciones }}</em></p>
                   }
                   <hr class="my-2 opacity-50">
                   <div class="text-end text-muted small">
-                    Facultativo firmante: <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
+                    {{ langService.get('admin_facultativo') }} <strong>Dr/a. {{ informe.medico_nombre }} {{ informe.medico_apellidos }}</strong>
                   </div>
                 </div>
               </div>

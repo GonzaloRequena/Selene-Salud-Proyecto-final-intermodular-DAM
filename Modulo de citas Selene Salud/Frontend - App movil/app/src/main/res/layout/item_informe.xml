@@ -20,7 +20,7 @@
             android:id="@+id/tvFechaInforme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Consulta: 10/06/2026"
+            android:text="@string/consulta_10_06_2026"
             android:textColor="@color/brand_primary"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -30,7 +30,7 @@
             android:id="@+id/tvMedicoInforme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Emitido por: Dr. Manuel García"
+            android:text="@string/emitido_por_dr_manuel_garc_a"
             android:textColor="#001E35"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DIAGNÓSTICO"
+            android:text="@string/diagnostico"
             android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
@@ -54,7 +54,7 @@
             android:id="@+id/tvDiagnostico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Faringitis aguda bacteriana."
+            android:text="@string/faringitis_aguda_bacteriana"
             android:textColor="#1A1C1E"
             android:textSize="14sp"
             android:layout_marginBottom="12dp"/>
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TRATAMIENTO PRESCRITO"
+            android:text="@string/tratamiento_prescrito"
             android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
@@ -71,7 +71,7 @@
             android:id="@+id/tvTratamiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Amoxicilina 500mg cada 8 horas durante 7 días."
+            android:text="@string/amoxicilina_500mg_cada_8_horas_durante_7_d_as"
             android:textColor="#1A1C1E"
             android:textSize="14sp"
             android:layout_marginBottom="12dp"/>
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OBSERVACIONES"
+            android:text="@string/observaciones"
             android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"/>
@@ -88,7 +88,7 @@
             android:id="@+id/tvObservaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reposo e hidratación constante. Volver si empeora."
+            android:text="@string/reposo_e_hidrataci_n_constante_volver_si_empeora"
             android:textColor="#41474D"
             android:textSize="13sp"/>
     </LinearLayout>

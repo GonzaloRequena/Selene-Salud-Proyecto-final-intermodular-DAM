@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mi Historial Clínico"
+        android:text="@string/mi_historial_clinico"
         android:gravity="center"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Histórico oficial de diagnósticos, tratamientos e informes."
+        android:text="@string/hist_rico_oficial_de_diagn_sticos_tratamientos_e_informes"
         android:textColor="@color/text_secondary"
         android:textSize="14sp"
         android:layout_marginBottom="12dp"/>
@@ -40,7 +40,7 @@
         android:layout_height="48dp"
         android:background="@color/brand_primary_light"
         android:elevation="2dp"
-        android:hint="Buscar por diagnóstico o medicamento..."
+        android:hint="@string/buscar_por_diagn_stico_o_medicamento"
         android:paddingHorizontal="16dp"
         android:textSize="14sp"
         android:textColor="#001E35"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No se registran informes clínicos en tu expediente."
+            android:text="@string/no_se_registran_informes_cl_nicos_en_tu_expediente"
             android:textColor="#71787E"
             android:textSize="16sp"
             android:visibility="gone"/>

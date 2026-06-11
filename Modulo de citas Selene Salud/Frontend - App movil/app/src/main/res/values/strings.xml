@@ -1,3 +1,70 @@
 <resources>
     <string name="app_name">Selene Salud App</string>
+
+    <string name="portal_del_paciente">Portal del paciente</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="registrate_aqui">¿No tienes cuenta? Regístrate aquí</string>
+
+    <string name="registro_de_paciente">Registro de paciente</string>
+    <string name="crea_tu_cuenta_de_selene_salud">Crea tu cuenta de Selene Salud</string>
+    <string name="dni_o_nie">DNI o NIE *</string>
+    <string name="nombre">Nombre *</string>
+    <string name="apellidos">Apellidos *</string>
+    <string name="telefono_movil">Teléfono móvil</string>
+    <string name="correo_electronico2">Correo electrónico *</string>
+    <string name="contrasena2">Contraseña *</string>
+    <string name="confirmar_registro">Confirmar registro</string>
+
+
+    <string name="hola_bienvenido">Hola, ¡bienvenido!</string>
+    <string name="que_deseas_gestionar_hoy">¿Qué deseas gestionar hoy?</string>
+    <string name="reservar_nueva_cita">Reservar nueva cita</string>
+    <string name="ver_mis_citas">Ver mis citas</string>
+    <string name="historial_e_informes">Historial e informes</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+
+
+    <string name="paso_1_selecciona_un_centro">Paso 1: Selecciona un Centro</string>
+    <string name="buscar_por_nombre_o_municipio">Buscar por nombre o municipio...</string>
+    <string name="nombre_del_centro">Nombre del centro</string>
+    <string name="centro_de_salud_hospital">Centro de salud / Hospital</string>
+    <string name="direcci_n_completa">Dirección completa</string>
+    <string name="municipio_provincia">📍 Municipio, Provincia</string>
+    <string name="publico">PÚBLICO</string>
+    <string name="_900_00_00_00">📞 900 00 00 00</string>
+
+    <string name="paso_2_selecciona_medico">Paso 2: Selecciona médico</string>
+    <string name="centro_seleccionado">Centro seleccionado</string>
+    <string name="dr_nombre_apellido">Dr. Nombre Apellido</string>
+    <string name="especialidad_medica">Especialidad médica</string>
+
+    <string name="paso_3_selecciona_fecha_y_hora">Paso 3: Selecciona fecha y hora</string>
+    <string name="cita_con_dr_nombre_apellido">Cita con: Dr. Nombre Apellido</string>
+    <string name="selecciona_una_hora_disponible">Selecciona una hora disponible:</string>
+    <string name="confirmar_y_agendar_cita">Confirmar y agendar cita</string>
+
+    <string name="mis_citas_medicas">Mis citas médicas</string>
+    <string name="consulta_tus_citas_programadas_o_cancela_si_lo_necesitas">Consulta tus citas programadas o cancela si lo necesitas.</string>
+    <string name="no_tienes_ninguna_cita_medica_registrada">No tienes ninguna cita médica registrada.</string>
+    <string name="_15_de_junio_2026_09_30">15 de Junio, 2026 - 09:30</string>
+    <string name="activa">ACTIVA</string>
+    <string name="medico_dr_manuel_garcia">Médico: Dr. Manuel García</string>
+    <string name="centro_san_jeronimo">Centro: San Jerónimo</string>
+    <string name="anular_cita_medica">Anular cita médica</string>
+
+    <string name="mi_historial_clinico">Mi historial clínico</string>
+    <string name="hist_rico_oficial_de_diagn_sticos_tratamientos_e_informes">Histórico oficial de diagnósticos, tratamientos e informes.</string>
+    <string name="buscar_por_diagn_stico_o_medicamento">Buscar por diagnóstico o medicamento...</string>
+    <string name="no_se_registran_informes_cl_nicos_en_tu_expediente">No se registran informes clínicos en tu expediente.</string>
+    <string name="consulta_10_06_2026">Consulta: 10/06/2026</string>
+    <string name="emitido_por_dr_manuel_garc_a">Emitido por: Dr. Manuel García</string>
+    <string name="diagnostico">DIAGNÓSTICO</string>
+    <string name="faringitis_aguda_bacteriana">Faringitis aguda bacteriana.</string>
+    <string name="tratamiento_prescrito">TRATAMIENTO PRESCRITO</string>
+    <string name="amoxicilina_500mg_cada_8_horas_durante_7_d_as">Amoxicilina 500mg cada 8 horas durante 7 días.</string>
+    <string name="observaciones">OBSERVACIONES</string>
+    <string name="reposo_e_hidrataci_n_constante_volver_si_empeora">Reposo e hidratación constante. Volver si empeora.</string>
+
 </resources>

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
+import { LanguageService } from '../../services/language.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -70,7 +71,7 @@ export class AdminDashboard implements OnInit {
     id_centro: ''
   };
 
-  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) { }
+  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef, public langService: LanguageService) { }
 
   ngOnInit(): void {
     this.cargarDatosIniciales();

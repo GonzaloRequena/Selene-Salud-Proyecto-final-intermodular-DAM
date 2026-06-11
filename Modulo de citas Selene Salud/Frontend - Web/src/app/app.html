@@ -4,7 +4,10 @@
 
     <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="#">
       <img src="logo2.png" alt="Logo Selene Salud" height="35" class="d-inline-block transition-all">
-      <span class="fs-4 tracking-tight">Selene<span class="fw-light text-secondary">Salud</span></span>
+      <span class="fs-4 tracking-tight">
+        {{ langService.get('login_title') }}<span class="fw-light text-secondary">{{ langService.get('login_subtitle')
+          }}</span>
+      </span>
     </a>
 
     <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -19,13 +22,13 @@
         <li class="nav-item">
           <a class="nav-link px-3 rounded-2 fw-medium text-secondary" routerLink="/admin"
             routerLinkActive="text-primary fw-bold bg-light active">
-            Panel Admin
+            {{ langService.get('nav_admin') }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3 rounded-2 fw-medium text-secondary" style="cursor: pointer;" routerLink="/admin"
             (click)="$event.preventDefault()">
-            Historial de informes
+            {{ langService.get('nav_informes') }}
           </a>
         </li>
         }
@@ -34,13 +37,13 @@
         <li class="nav-item">
           <a class="nav-link px-3 rounded-2 fw-medium text-secondary" routerLink="/medico"
             routerLinkActive="text-primary fw-bold bg-light active">
-            Mi agenda
+            {{ langService.get('nav_agenda') }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3 rounded-2 fw-medium text-secondary" style="cursor: pointer;" routerLink="/medico"
             (click)="$event.preventDefault()">
-            Historial de informes
+            {{ langService.get('nav_informes') }}
           </a>
         </li>
         }
@@ -50,9 +53,12 @@
       <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-light">
 
         <div class="text-lg-end lh-sm">
-          <span class="text-muted small px-1" style="font-size: 0.75rem;">CONECTADO</span>
-          <span class="text-dark fw-semibold small gap-2 mx-2"><strong>{{ authService.usuarioLogueado().nombre
-              }}</strong></span>
+          <span class="text-muted small px-1" style="font-size: 0.75rem;">
+            {{ langService.get('nav_conectado') }}
+          </span>
+          <span class="text-dark fw-semibold small gap-2 mx-2">
+            <strong>{{ authService.usuarioLogueado().nombre }}</strong>
+          </span>
           <span
             class="badge bg-light text-primary border border-primary border-opacity-10 mx-2 px-2 py-1.5 rounded-pill font-monospace fw-bold">
             {{ authService.usuarioLogueado().rol }}
@@ -62,15 +68,42 @@
         <div class="d-none d-lg-block border-start border-light h-100 py-3 mx-1"></div>
 
         <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-medium transition-all"
-          style="font-size: 0.85rem;" (click)=ejecutarLogout()>
-          <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+          (click)="authService.logout()">
+          {{ langService.get('nav_logout') }}
         </button>
 
+        <div class="d-none d-lg-block border-start border-light h-100 py-3 mx-1"></div>
+
+        <div class="me-0">
+          <div class="btn-group bg-white rounded-pill shadow-sm border p-1" role="group"
+            aria-label="Selector de idioma">
+
+            <button type="button"
+              class="btn btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-1 border-0 transition-all"
+              [class.btn-primary]="langService.currentLang === 'es'"
+              [class.btn-light]="langService.currentLang !== 'es'" [class.text-muted]="langService.currentLang !== 'es'"
+              (click)="langService.setLanguage('es')">
+              <img src="https://flagcdn.com/w20/es.png" width="20" alt="Español" class="rounded-1 shadow-sm"> <span
+                class="fw-bold small" style="font-size: 0.75rem;">ES</span>
+            </button>
+
+            <button type="button"
+              class="btn btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-1 border-0 transition-all"
+              [class.btn-primary]="langService.currentLang === 'en'"
+              [class.btn-light]="langService.currentLang !== 'en'" [class.text-muted]="langService.currentLang !== 'en'"
+              (click)="langService.setLanguage('en')">
+              <img src="https://flagcdn.com/w20/gb.png" width="20" alt="English" class="rounded-1 shadow-sm"> <span
+                class="fw-bold small" style="font-size: 0.75rem;">EN</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 }
+
+
 
 <div class="container my-4">
   <router-outlet></router-outlet>

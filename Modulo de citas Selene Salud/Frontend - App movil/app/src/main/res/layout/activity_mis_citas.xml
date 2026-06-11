@@ -20,7 +20,7 @@
         android:id="@+id/tvTituloMisCitas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis citas médicas"
+        android:text="@string/mis_citas_medicas"
         android:gravity="center"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consulta tus citas programadas o cancela si lo necesitas."
+        android:text="@string/consulta_tus_citas_programadas_o_cancela_si_lo_necesitas"
         android:textColor="@color/text_secondary"
         android:textSize="14sp"
         android:layout_marginBottom="16dp"/>
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No tienes ninguna cita médica registrada."
+            android:text="@string/no_tienes_ninguna_cita_medica_registrada"
             android:textColor="#71787E"
             android:textSize="16sp"
             android:visibility="gone"/>

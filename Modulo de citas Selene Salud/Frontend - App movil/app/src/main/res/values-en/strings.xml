@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Selene Health App</string>
+
+    <string name="portal_del_paciente">Patient Portal</string>
+    <string name="correo_electronico">Email Address</string>
+    <string name="contrasena">Password</string>
+    <string name="iniciar_sesion">Log In</string>
+    <string name="registrate_aqui">Don\'t have an account? Register here</string>
+
+    <string name="registro_de_paciente">Patient Registration</string>
+    <string name="crea_tu_cuenta_de_selene_salud">Create your Selene Health account</string>
+    <string name="dni_o_nie">DNI or NIE *</string>
+    <string name="nombre">First Name *</string>
+    <string name="apellidos">Last Name *</string>
+    <string name="telefono_movil">Mobile Phone</string>
+    <string name="correo_electronico2">Email Address *</string>
+    <string name="contrasena2">Password *</string>
+    <string name="confirmar_registro">Confirm Registration</string>
+
+    <string name="hola_bienvenido">Hello, welcome!</string>
+    <string name="que_deseas_gestionar_hoy">What would you like to manage today?</string>
+    <string name="reservar_nueva_cita">Book a new appointment</string>
+    <string name="ver_mis_citas">View my appointments</string>
+    <string name="historial_e_informes">History and reports</string>
+    <string name="cerrar_sesi_n">Sign Out</string>
+
+    <string name="paso_1_selecciona_un_centro">Step 1: Select a Center</string>
+    <string name="buscar_por_nombre_o_municipio">Search by name or municipality...</string>
+    <string name="nombre_del_centro">Center name</string>
+    <string name="centro_de_salud_hospital">Health Center / Hospital</string>
+    <string name="direcci_n_completa">Full address</string>
+    <string name="municipio_provincia">📍 Municipality, Province</string>
+    <string name="publico">PUBLIC</string>
+    <string name="_900_00_00_00">📞 900 00 00 00</string>
+
+    <string name="paso_2_selecciona_medico">Step 2: Select Doctor</string>
+    <string name="centro_seleccionado">Selected center</string>
+    <string name="dr_nombre_apellido">Dr. Name Lastname</string>
+    <string name="especialidad_medica">Medical specialty</string>
+
+    <string name="paso_3_selecciona_fecha_y_hora">Step 3: Select Date &amp; Time</string>
+    <string name="cita_con_dr_nombre_apellido">Appointment with: Dr. Name Lastname</string>
+    <string name="selecciona_una_hora_disponible">Select an available time:</string>
+    <string name="confirmar_y_agendar_cita">Confirm and book appointment</string>
+
+    <string name="mis_citas_medicas">My Medical Appointments</string>
+    <string name="consulta_tus_citas_programadas_o_cancela_si_lo_necesitas">Check your scheduled appointments or cancel if needed.</string>
+    <string name="no_tienes_ninguna_cita_medica_registrada">You do not have any registered medical appointments.</string>
+    <string name="_15_de_junio_2026_09_30">June 15, 2026 - 09:30</string>
+    <string name="activa">ACTIVE</string>
+    <string name="medico_dr_manuel_garcia">Doctor: Dr. Manuel García</string>
+    <string name="centro_san_jeronimo">Center: San Jerónimo</string>
+    <string name="anular_cita_medica">Cancel medical appointment</string>
+
+    <string name="mi_historial_clinico">My Medical History</string>
+    <string name="hist_rico_oficial_de_diagn_sticos_tratamientos_e_informes">Official history of diagnoses, treatments, and reports.</string>
+    <string name="buscar_por_diagn_stico_o_medicamento">Search by diagnosis or medication...</string>
+    <string name="no_se_registran_informes_cl_nicos_en_tu_expediente">No medical reports found in your record.</string>
+    <string name="consulta_10_06_2026">Consultation: 10/06/2026</string>
+    <string name="emitido_por_dr_manuel_garc_a">Issued by: Dr. Manuel García</string>
+    <string name="diagnostico">DIAGNOSIS</string>
+    <string name="faringitis_aguda_bacteriana">Acute bacterial pharyngitis.</string>
+    <string name="tratamiento_prescrito">PRESCRIBED TREATMENT</string>
+    <string name="amoxicilina_500mg_cada_8_horas_durante_7_d_as">Amoxicillin 500mg every 8 hours for 7 days.</string>
+    <string name="observaciones">OBSERVATIONS</string>
+    <string name="reposo_e_hidrataci_n_constante_volver_si_empeora">Rest and constant hydration. Return if symptoms worsen.</string>
+</resources>

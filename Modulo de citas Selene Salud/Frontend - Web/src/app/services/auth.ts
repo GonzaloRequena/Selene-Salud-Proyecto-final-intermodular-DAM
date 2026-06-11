@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'; // Importamos las URLs de entorno
 import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   // SIGNAL GLOBAL: Almacena el objeto del usuario logueado (id, nombre, rol...) o null si no hay sesión
   usuarioLogueado = signal<any | null>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     // Cada vez que el usuario refresque la pestaña, comprobamos si ya tenía una sesión activa
     this.cargarSesionExistente();
   }
@@ -44,6 +45,8 @@ export class AuthService {
     
     // Reseteamos la Signal a null (los menús de Admin/Médico desaparecerán solos)
     this.usuarioLogueado.set(null);
+    // Se vuelve a la página de login desde el AppComponent al detectar que no hay usuario logueado
+    this.router.navigate(['/login']);
   }
 
   /**

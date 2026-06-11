@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Obligatorio para leer datos de formularios de texto
 import { AuthService } from '../../services/auth'; // Importamos el servicio de autenticación
+import { LanguageService } from '../../services/language.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'; // Importamos la librería de alertas del curso
 
@@ -20,7 +21,7 @@ export class Login {
   };
 
   // Inyectamos el servicio de autenticación y el enrutador de páginas
-  constructor(private authService: AuthService, private router: Router, private zone: NgZone) { }
+  constructor(private authService: AuthService, public langService: LanguageService, private router: Router, private zone: NgZone) { }
 
   ejecutarLogin() {
     // Validación básica visual previa

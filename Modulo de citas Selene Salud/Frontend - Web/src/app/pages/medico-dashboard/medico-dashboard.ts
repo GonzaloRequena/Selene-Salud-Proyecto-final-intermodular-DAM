@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MedicoService } from '../../services/medico.service';
+import { LanguageService } from '../../services/language.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -86,26 +87,27 @@ export class MedicoDashboard implements OnInit {
 
   constructor(
     private medicoService: MedicoService,
+    public langService: LanguageService,
     private cdr: ChangeDetectorRef
   ) {}
 
  ngOnInit(): void {
-    console.log("🚀 Iniciando MédicoDashboard...");
+    console.log("Iniciando MédicoDashboard...");
     
     // Cambiamos 'usuario' por 'selene_usuario'
     const usuarioString = localStorage.getItem('selene_usuario');
     
     if (usuarioString) {
       const usuarioObjeto = JSON.parse(usuarioString);
-      console.log("📦 [DEBUG] Contenido de selene_usuario:", usuarioObjeto);
+      console.log("[DEBUG] Contenido de selene_usuario:", usuarioObjeto);
       
       // Extraemos el ID de forma segura según cómo venga estructurado
       this.medicoId = usuarioObjeto.id || (usuarioObjeto.usuario ? usuarioObjeto.usuario.id : undefined);
       this.medicoNombre = usuarioObjeto.nombre || (usuarioObjeto.usuario ? usuarioObjeto.usuario.nombre : 'Médico');
       
-      console.log("🆔 [DEBUG] ID extraído con éxito:", this.medicoId);
+      console.log("[DEBUG] ID extraído con éxito:", this.medicoId);
     } else {
-      console.error("❌ Error grave: No existe la clave 'selene_usuario' en el LocalStorage.");
+      console.error("Error grave: No existe la clave 'selene_usuario' en el LocalStorage.");
     }
 
     this.cargarDatosIniciales();
@@ -117,11 +119,11 @@ export class MedicoDashboard implements OnInit {
     // 1. Petición de Citas
     this.medicoService.obtenerMisCitas().subscribe({
       next: (res) => {
-        console.log("📅 [DEBUG] Respuesta de Citas recibida:", res);
+        console.log("[DEBUG] Respuesta de Citas recibida:", res);
         this.listaCitas = res.citas || res;
         this.cdr.detectChanges();
       },
-      error: (err) => console.error("❌ Error al cargar tus citas médicas", err)
+      error: (err) => console.error("Error al cargar tus citas médicas", err)
     });
 
     // 2. Petición de Centros con control estricto
@@ -130,18 +132,18 @@ export class MedicoDashboard implements OnInit {
       
       this.medicoService.obtenerMisCentros(this.medicoId).subscribe({
         next: (res) => {
-          console.log("🏥 [DEBUG] ¡Backend respondió! Datos de centros:", res);
+          console.log("[DEBUG] ¡Backend respondió! Datos de centros:", res);
           // Tu controlador devuelve { centros: [...] }, accedemos de forma segura
           this.listaCentros = res.centros ? res.centros : (Array.isArray(res) ? res : []);
-          console.log("📊 [DEBUG] Array final asignado a listaCentros:", this.listaCentros);
+          console.log("[DEBUG] Array final asignado a listaCentros:", this.listaCentros);
           this.cdr.detectChanges();
         },
         error: (err) => {
-          console.error("❌ Error crítico al cargar tus centros asignados:", err);
+          console.error("Error crítico al cargar tus centros asignados:", err);
         }
       });
     } else {
-      console.warn("⚠️ [DEBUG] Ojo: No se buscan centros porque 'this.medicoId' es inválido o nulo.");
+      console.warn("[DEBUG] Ojo: No se buscan centros porque 'this.medicoId' es inválido o nulo.");
     }
   }
 
